@@ -1,0 +1,6 @@
+/* EViews output: keep the columns aligned and readable */
+.md-typeset pre > code {
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+.md-typeset h1 { font-weight: 700; }
