@@ -1,0 +1,1549 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Econometric ideas explained simply, with stories, data and EViews output">
+      
+      
+        <meta name="author" content="Prof.(Dr). Santhosh Kumar P K">
+      
+      
+        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/panel-unit-roots/">
+      
+      
+        <link rel="prev" href="../structural-breaks-unit-roots/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Twenty States, One Question: Panel Unit Root Tests (and a Field Guide to All of Them) - Econometrics Simplified</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+4:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Serif 4";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#twenty-states-one-question-panel-unit-root-tests-and-a-field-guide-to-all-of-them" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Econometrics Simplified
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Twenty States, One Question: Panel Unit Root Tests (and a Field Guide to All of Them)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../unit-roots/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Unit Root Series
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../data/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Data & EViews
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../archive/2026/" class="md-tabs__link">
+          
+  
+  
+  Archive
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../category/dummy-variables/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    Econometrics Simplified
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Root Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & EViews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive/2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/dummy-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/heteroskedasticity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heteroskedasticity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/measurement-error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Measurement error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/model-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/multicollinearity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multicollinearity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/omitted-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omitted variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/panel-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panel data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/structural-breaks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structural breaks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/time-series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit roots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The data first
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The data first">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-one-state-at-a-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing one state at a time
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pooling-the-idea-and-the-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pooling: the idea and the catch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-main-panel-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The main panel tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The main panel tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#levin-lin-and-chu-2002-one-rho-for-everybody" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Levin, Lin and Chu (2002): one \(\rho\) for everybody
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#im-pesaran-and-shin-2003-everyone-gets-their-own-rho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Im, Pesaran and Shin (2003): everyone gets their own \(\rho\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fisher-tests-maddala-and-wu-1999-choi-2001-combine-the-p-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fisher tests (Maddala and Wu 1999; Choi 2001): combine the p-values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadri-2000-kpss-for-panels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hadri (2000): KPSS for panels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wait-both-nulls-rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wait, both nulls rejected?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-more-problems-neighbours-and-seasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two more problems: neighbours and seasons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-field-guide-to-unit-root-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A field guide to unit root tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where next?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href=".." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-10-28 00:00:00+00:00" class="md-ellipsis">October 28, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../category/unit-roots/">Unit roots</a>, 
+                              <a href="../category/panel-data/">Panel data</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              9 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="twenty-states-one-question-panel-unit-root-tests-and-a-field-guide-to-all-of-them">Twenty States, One Question: Panel Unit Root Tests (and a Field Guide to All of Them)</h1>
+<p>Chapter 6 ended with a sad fact: with 30 years of annual data, even a good unit root test is half blind. You can't make history longer. But you can look at more places. If you have 30 years of data for 20 states, you have 600 observations of the same economic process playing out in 20 slightly different settings. Can we pool them to see better?</p>
+<p>Yes, with care. This final chapter is about panel unit root tests, the tricky questions they answer, and a field guide to every test in this series.</p>
+<!-- more -->
+
+<div class="admonition abstract">
+<p class="admonition-title">Unit Root Series · Chapter 8 of 8</p>
+<p><a href="../kite-and-balloon/">1. The kite and the balloon</a> · <a href="../dickey-fuller/">2. Dickey-Fuller</a> · <a href="../augmented-dickey-fuller/">3. Augmented Dickey-Fuller</a> · <a href="../phillips-perron/">4. Phillips-Perron</a> · <a href="../kpss/">5. KPSS</a> · <a href="../dfgls-ng-perron/">6. DF-GLS and Ng-Perron</a> · <a href="../structural-breaks-unit-roots/">7. Structural breaks</a> · <strong>8. Panel unit roots</strong></p>
+<p>Data: <a href="../downloads/blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P16_panel</strong> · Simulated annual panel, 20 states × 1994–2023</p>
+</div>
+<h2 id="the-data-first">The data first</h2>
+<p>The sheet <strong>P16_panel</strong> has annual inflation for 20 imaginary states, S01 to S20, from 1994 to 2023. I built 17 of them as stationary AR(1) series with <span class="arithmatex">\(\rho\)</span> between 0.2 and 0.6. I built the other three, <strong>S06, S13 and S18</strong>, as random walks.</p>
+<p><img alt="Small multiples of inflation in 20 states, three highlighted as random walks" src="../images/p16_panel.png" /></p>
+<p>Can you spot the three random walks without the red colour? It's not easy. S06 drifts up and stays up for a decade; the others are subtle.</p>
+<h3 id="testing-one-state-at-a-time">Testing one state at a time</h3>
+<p>Here are ADF tests (constant, SIC lags) for each state separately. EViews prints this table as part of the panel test output:</p>
+<div class="highlight"><pre><span></span><code>Intermediate ADF test results
+
+==============================================================================
+Cross           t-Stat     Prob.   Lag  Max Lag   Obs
+==============================================================================
+S01            -4.4124    0.0003     0        4    29
+S02            -4.0419    0.0012     0        4    29
+S03            -2.8439    0.0523     0        4    29
+S04            -3.0511    0.0304     0        4    29
+S05            -2.8940    0.0460     0        4    29
+S06            -1.8531    0.3544     0        4    29
+S07            -4.1273    0.0009     0        4    29
+S08            -3.8468    0.0025     1        4    28
+S09            -2.9960    0.0353     0        4    29
+S10            -5.6491    0.0000     1        4    28
+S11            -3.4628    0.0090     0        4    29
+S12            -4.6379    0.0001     0        4    29
+S13            -2.2643    0.1837     0        4    29
+S14            -3.7305    0.0037     0        4    29
+S15            -4.5612    0.0002     0        4    29
+S16            -2.8706    0.0489     0        4    29
+S17            -1.2461    0.6534     3        4    26
+S18            -2.4318    0.1330     0        4    29
+S19            -4.0947    0.0010     0        4    29
+S20            -3.2099    0.0194     0        4    29
+==============================================================================
+</code></pre></div>
+<p>At the 10% level, four states fail to reject a unit root: S06, S13, S17 and S18. Three of them are the true random walks. <strong>S17 is actually stationary</strong>, but with only 29 usable observations the test could not tell. At 5%, S03 joins them, and it is stationary too. That's the low power of Chapter 6, state by state.</p>
+<h2 id="pooling-the-idea-and-the-catch">Pooling: the idea and the catch</h2>
+<p>Pooling the states gives the test far more information. But it forces us to think hard about a question that single-series tests never raise: <strong>what exactly is the alternative hypothesis?</strong></p>
+<ul>
+<li>"<strong>All</strong> 20 states are stationary"?</li>
+<li>"<strong>At least some</strong> states are stationary"?</li>
+<li>"All states share <strong>the same</strong> <span class="arithmatex">\(\rho\)</span>"?</li>
+</ul>
+<p>Different tests answer different questions. Getting this wrong is the most common mistake with panel unit root tests.</p>
+<h2 id="the-main-panel-tests">The main panel tests</h2>
+<h3 id="levin-lin-and-chu-2002-one-rho-for-everybody">Levin, Lin and Chu (2002): one <span class="arithmatex">\(\rho\)</span> for everybody</h3>
+<p>The LLC test runs the ADF regression for every state but forces a <strong>common</strong> autoregressive coefficient:</p>
+<div class="arithmatex">\[
+\Delta y_{it} = \alpha_i + \delta\, y_{i,t-1} + \sum_{j=1}^{p_i} \gamma_{ij}\, \Delta y_{i,t-j} + \varepsilon_{it}
+\]</div>
+<p>Each state has its own constant <span class="arithmatex">\(\alpha_i\)</span> and its own lags, but <strong>one</strong> <span class="arithmatex">\(\delta\)</span>. The hypotheses are <span class="arithmatex">\(H_0: \delta = 0\)</span> for all states versus <span class="arithmatex">\(H_1: \delta &lt; 0\)</span> for all states. Breitung's (2000) test makes the same assumption with a different correction for bias.</p>
+<p>The catch: is it believable that the inflation persistence in Kerala and Punjab is <em>exactly</em> the same? Usually not. That's why the next test is more popular.</p>
+<h3 id="im-pesaran-and-shin-2003-everyone-gets-their-own-rho">Im, Pesaran and Shin (2003): everyone gets their own <span class="arithmatex">\(\rho\)</span></h3>
+<p>IPS let each state have its own <span class="arithmatex">\(\delta_i\)</span>. They simply run a separate ADF test for each state, then <strong>average the t-statistics</strong>:</p>
+<div class="arithmatex">\[
+\bar t = \frac{1}{N}\sum_{i=1}^{N} t_i
+\]</div>
+<p>Under the null, every <span class="arithmatex">\(t_i\)</span> has a Dickey-Fuller distribution with a known mean and variance (they depend on the sample length and the number of lags). Standardise the average and you get</p>
+<div class="arithmatex">\[
+W_{\bar t} = \frac{\sqrt{N}\,\left(\bar t - \operatorname{E}[t_i]\right)}{\sqrt{\operatorname{Var}[t_i]}} \;\sim\; N(0,1)
+\]</div>
+<p>For <span class="arithmatex">\(T = 30\)</span> and no lags, <span class="arithmatex">\(\operatorname{E}[t_i] \approx -1.52\)</span> and <span class="arithmatex">\(\operatorname{Var}[t_i] \approx 0.80\)</span>. IPS tabulated these by simulation, much as Dickey and Fuller had done for a single series.</p>
+<p>The hypotheses: <span class="arithmatex">\(H_0\)</span>: <strong>every</strong> state has a unit root. <span class="arithmatex">\(H_1\)</span>: <strong>some</strong> states are stationary. Rejecting the null does <em>not</em> mean all states are stationary.</p>
+<p>M. Hashem Pesaran, the P in IPS, has taught at Cambridge and the University of Southern California, and he is one of the most cited econometricians alive. He comes back below.</p>
+<h3 id="fisher-tests-maddala-and-wu-1999-choi-2001-combine-the-p-values">Fisher tests (Maddala and Wu 1999; Choi 2001): combine the p-values</h3>
+<p>An even simpler idea, borrowed from R. A. Fisher's work in the 1930s on combining independent experiments. Run any unit root test on each state, take its p-value <span class="arithmatex">\(p_i\)</span>, and combine:</p>
+<div class="arithmatex">\[
+P = -2\sum_{i=1}^{N} \ln p_i \;\sim\; \chi^2_{2N}
+\]</div>
+<details class="note">
+<summary>Why does this work? (click to open)</summary>
+<p>If the null is true, each p-value is uniformly distributed between 0 and 1. For a uniform <span class="arithmatex">\(p\)</span>, <span class="arithmatex">\(-2\ln p\)</span> has a <span class="arithmatex">\(\chi^2_2\)</span> distribution. Adding <span class="arithmatex">\(N\)</span> independent <span class="arithmatex">\(\chi^2_2\)</span> variables gives <span class="arithmatex">\(\chi^2_{2N}\)</span>. Small p-values make <span class="arithmatex">\(-\ln p_i\)</span> big, so many small p-values make <span class="arithmatex">\(P\)</span> big.</p>
+</details>
+<p>EViews reports the Fisher test with ADF p-values ("ADF - Fisher Chi-square") and with Phillips-Perron p-values ("PP - Fisher Chi-square"), plus Choi's version <span class="arithmatex">\(Z = \frac{1}{\sqrt N}\sum \Phi^{-1}(p_i)\)</span>, which is normal under the null. Like IPS, the alternative is "some states are stationary".</p>
+<h3 id="hadri-2000-kpss-for-panels">Hadri (2000): KPSS for panels</h3>
+<p>Hadri takes the KPSS idea of <a href="../kpss/">Chapter 5</a> to panels. Compute the KPSS statistic <span class="arithmatex">\(\eta_i\)</span> for each state, average them, and standardise:</p>
+<div class="arithmatex">\[
+Z = \frac{\sqrt{N}\,\left(\bar\eta - \tfrac16\right)}{\sqrt{1/45}} \;\sim\; N(0,1)
+\]</div>
+<p>(With a constant only, each KPSS statistic has mean 1/6 and variance 1/45 under the null.) The hypotheses are turned around: <span class="arithmatex">\(H_0\)</span>: <strong>every</strong> state is stationary. <span class="arithmatex">\(H_1\)</span>: <strong>some</strong> states have a unit root.</p>
+<h2 id="the-results">The results</h2>
+<p>In EViews, open the panel series and choose <strong>View → Unit Root Test</strong>, test type "Summary" or a single test, individual intercept, SIC lags (command: <code>infl.uroot(sum, const)</code>).</p>
+<div class="highlight"><pre><span></span><code>Panel unit root test: Summary
+Series: INFL
+Date: 10/27/26   Time: 21:45
+Sample: 1994 2023
+Exogenous variables: Individual effects
+Automatic selection of maximum lags
+Automatic lag length selection based on SIC: 0 to 3
+Newey-West automatic bandwidth selection and Bartlett kernel
+
+==============================================================================
+                                                              Cross-
+Method                                 Statistic   Prob.**  sections     Obs
+Null: Unit root (assumes individual unit root process)
+Im, Pesaran and Shin W-stat             -9.37231    0.0000        20     575
+ADF - Fisher Chi-square                 203.8021    0.0000        20     575
+PP - Fisher Chi-square                  219.7473    0.0000        20     580
+==============================================================================
+** Probabilities for Fisher tests are computed using an asymptotic Chi
+        -square distribution. All other tests assume asymptotic normality.
+</code></pre></div>
+<p>Every test in this table rejects its null with room to spare:</p>
+<ul>
+<li><strong>IPS:</strong> <span class="arithmatex">\(W = -9.37\)</span>. The null "every state has a unit root" is firmly rejected.</li>
+<li><strong>ADF-Fisher:</strong> 203.8, against a <span class="arithmatex">\(\chi^2_{40}\)</span> distribution whose 1% critical value is about 63.7. Rejected.</li>
+<li><strong>PP-Fisher:</strong> 219.7. Rejected.</li>
+</ul>
+<p>Now the Hadri test (test type "Hadri" in the same dialog):</p>
+<div class="highlight"><pre><span></span><code>Hadri Panel Unit Root Test
+Series: INFL
+Date: 10/27/26   Time: 21:45
+Sample: 1994 2023
+Exogenous variables: Individual effects
+Total (balanced) observations: 600
+Cross-sections included: 20
+
+Null Hypothesis: Stationarity
+
+==============================================================================
+Method                                           Statistic   Prob.**
+==============================================================================
+Hadri Z-stat                                       4.10599    0.0000
+Heteroscedastic Consistent Z-stat                  4.07879    0.0000
+==============================================================================
+** Probabilities are computed assuming asymptotic normality
+</code></pre></div>
+<p><span class="arithmatex">\(Z = 4.11\)</span>, p &lt; 0.0001. The null "every state is stationary" is <strong>also</strong> rejected.</p>
+<h3 id="wait-both-nulls-rejected">Wait, both nulls rejected?</h3>
+<p>Yes, and both tests are right.</p>
+<ul>
+<li>IPS rejects "<strong>all</strong> 20 states have a unit root". True: 17 of them don't.</li>
+<li>Hadri rejects "<strong>all</strong> 20 states are stationary". Also true: 3 of them aren't.</li>
+</ul>
+<p>The truth sits between the two nulls, and both tests have found it. What neither test can tell you is <strong>which</strong> states are which, or <strong>how many</strong>. For that you are back to looking state by state, with all the low power that implies.</p>
+<p>This example shows the most important rule for panel unit root tests: <strong>state the hypotheses in words before you interpret the result.</strong> "The panel is stationary" is almost never the right conclusion. "Not every state has a unit root" usually is.</p>
+<h2 id="two-more-problems-neighbours-and-seasons">Two more problems: neighbours and seasons</h2>
+<p><strong>States are not independent.</strong> A national monetary policy, an oil price shock or a monsoon failure hits many states at once. All the tests above assume the states' shocks are independent, and they can reject far too often when they are not. Pesaran (2007) proposed the <strong>CIPS</strong> test, which adds cross-section averages to each regression to soak up common shocks. Tests like this are called "second generation" panel unit root tests. Whenever your panel units share a common economy, use one.</p>
+<p><strong>Seasons can have unit roots too.</strong> Monthly or quarterly data can wander at seasonal frequencies: the monsoon pattern itself might drift over the years. Hylleberg, Engle, Granger and Yoo (1990) developed the <strong>HEGY</strong> test for seasonal unit roots. Two of its four authors, Robert Engle and Clive Granger, shared the 2003 Nobel Prize in Economics: Engle for modelling time-varying volatility (ARCH), Granger for cointegration. Not many papers on seasonal adjustment can claim two Nobel laureates.</p>
+<h2 id="a-field-guide-to-unit-root-tests">A field guide to unit root tests</h2>
+<p>Everything in this series, on one page:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Null hypothesis</th>
+<th>Rejects for</th>
+<th>Best used when</th>
+<th>EViews (<code>uroot</code> option)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dickey-Fuller (1979)</td>
+<td>Unit root</td>
+<td>Very negative t</td>
+<td>Shocks are white noise</td>
+<td><code>adf</code> with <code>lag=0</code></td>
+</tr>
+<tr>
+<td>Augmented DF (Said-Dickey 1984)</td>
+<td>Unit root</td>
+<td>Very negative t</td>
+<td>The default workhorse</td>
+<td><code>adf</code></td>
+</tr>
+<tr>
+<td>Phillips-Perron (1988)</td>
+<td>Unit root</td>
+<td>Very negative t</td>
+<td>Heteroskedastic or autocorrelated shocks</td>
+<td><code>pp</code></td>
+</tr>
+<tr>
+<td>KPSS (1992)</td>
+<td><strong>Stationary</strong></td>
+<td>Large LM</td>
+<td>Confirming an ADF result</td>
+<td><code>kpss</code></td>
+</tr>
+<tr>
+<td>DF-GLS (ERS 1996)</td>
+<td>Unit root</td>
+<td>Very negative t</td>
+<td>Persistent series, short samples</td>
+<td><code>dfgls</code></td>
+</tr>
+<tr>
+<td>ERS point-optimal (1996)</td>
+<td>Unit root</td>
+<td>Small <span class="arithmatex">\(P_T\)</span></td>
+<td>Same as DF-GLS</td>
+<td><code>ers</code></td>
+</tr>
+<tr>
+<td>Ng-Perron (2001)</td>
+<td>Unit root</td>
+<td>Small values</td>
+<td>Persistent series, negative MA shocks</td>
+<td><code>np</code></td>
+</tr>
+<tr>
+<td>Zivot-Andrews (1992)</td>
+<td>Unit root, no break</td>
+<td>Very negative t</td>
+<td>A break at an unknown date</td>
+<td>Breakpoint unit root test</td>
+</tr>
+<tr>
+<td>Lee-Strazicich (2003)</td>
+<td>Unit root, with breaks</td>
+<td>Very negative t</td>
+<td>Breaks may exist under either hypothesis</td>
+<td>Not built in</td>
+</tr>
+<tr>
+<td>LLC (2002), Breitung (2000)</td>
+<td>All units have a unit root</td>
+<td>Very negative</td>
+<td>Homogeneous panels</td>
+<td>Panel: <code>llc</code>, <code>breit</code></td>
+</tr>
+<tr>
+<td>IPS (2003)</td>
+<td>All units have a unit root</td>
+<td>Very negative W</td>
+<td>Heterogeneous panels</td>
+<td>Panel: <code>ips</code></td>
+</tr>
+<tr>
+<td>Fisher ADF/PP (1999, 2001)</td>
+<td>All units have a unit root</td>
+<td>Large <span class="arithmatex">\(\chi^2\)</span></td>
+<td>Unbalanced panels, any test</td>
+<td>Panel: <code>adf</code>, <code>pp</code></td>
+</tr>
+<tr>
+<td>Hadri (2000)</td>
+<td><strong>All units stationary</strong></td>
+<td>Large Z</td>
+<td>Confirming panel results</td>
+<td>Panel: <code>hadri</code></td>
+</tr>
+<tr>
+<td>CIPS (Pesaran 2007)</td>
+<td>All units have a unit root</td>
+<td>Very negative</td>
+<td>Units share common shocks</td>
+<td>Not built in</td>
+</tr>
+<tr>
+<td>HEGY (1990)</td>
+<td>Seasonal unit roots</td>
+<td>Very negative t, large F</td>
+<td>Monthly or quarterly data</td>
+<td>Not built in</td>
+</tr>
+</tbody>
+</table>
+<p>And the five rules I would pin above every student's desk:</p>
+<ol>
+<li><strong>Plot the series first.</strong> Your eyes pick the deterministic terms and spot breaks.</li>
+<li><strong>"Cannot reject" is not "found".</strong> Unit root tests have low power. Use DF-GLS or Ng-Perron near the boundary.</li>
+<li><strong>Use two courts.</strong> Pair a unit-root-null test with a stationarity-null test.</li>
+<li><strong>Look for steps in the road.</strong> One break can turn a kite into a balloon in the eyes of the test.</li>
+<li><strong>Say the hypotheses in words</strong>, especially with panels.</li>
+</ol>
+<h2 id="where-next">Where next?</h2>
+<p>Remember Pearson's drunk from Chapter 1, wandering away from his lamp post? In 1994 Michael Murray wrote a short paper in <em>The American Statistician</em> called "A drunk and her dog". The drunk wanders. Her dog wanders. But every time the dog strays too far, she calls its name, and it comes back towards her. Both are random walks, yet the distance between them is a kite.</p>
+<p>That is <strong>cointegration</strong>, Granger's Nobel-winning idea, and it is where this blog goes next.</p>
+<div class="admonition question">
+<p class="admonition-title">Something to think about</p>
+<p>A study runs the IPS test on real exchange rates for 25 countries, rejects the null, and concludes "purchasing power parity holds for all countries". Write a two-sentence comment explaining what the test really showed, and one extra test you would ask them to run. Leave it in the comments.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All data on this blog are simulated for teaching purposes.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="../javascripts/tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>

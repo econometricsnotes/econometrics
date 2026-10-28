@@ -2,82 +2,134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/about/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/data/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/unit-roots/</loc>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/ice-cream/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/dickey-fuller/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/augmented-dickey-fuller/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/phillips-perron/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/kpss/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/dfgls-ng-perron/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/structural-breaks-unit-roots/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/panel-unit-roots/</loc>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/random-walks/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/r-squared/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/noisy-ruler/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/errors-fan-out/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/monsoon-dummy/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/rules-changed/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/two-friends/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/kite-and-balloon/</loc>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/archive/2026/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
-         <loc>https://econometricsnotes.github.io/econometrics/category/multicollinearity/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <loc>https://econometricsnotes.github.io/econometrics/category/unit-roots/</loc>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
-         <loc>https://econometricsnotes.github.io/econometrics/category/time-series/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <loc>https://econometricsnotes.github.io/econometrics/category/panel-data/</loc>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/category/structural-breaks/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/category/time-series/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/category/multicollinearity/</loc>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/category/dummy-variables/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/category/heteroskedasticity/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/category/measurement-error/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/category/model-selection/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
     </url>
     <url>
          <loc>https://econometricsnotes.github.io/econometrics/category/omitted-variables/</loc>
-         <lastmod>2026-10-27</lastmod>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/page/2/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://econometricsnotes.github.io/econometrics/archive/2026/page/2/</loc>
+         <lastmod>2026-10-28</lastmod>
     </url>
 </urlset>

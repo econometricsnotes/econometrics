@@ -1,0 +1,1393 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Econometric ideas explained simply, with stories, data and EViews output">
+      
+      
+        <meta name="author" content="Prof.(Dr). Santhosh Kumar P K">
+      
+      
+        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/augmented-dickey-fuller/">
+      
+      
+        <link rel="prev" href="../dickey-fuller/">
+      
+      
+        <link rel="next" href="../phillips-perron/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Giving the Test a Memory: The Augmented Dickey-Fuller Test - Econometrics Simplified</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+4:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Serif 4";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#giving-the-test-a-memory-the-augmented-dickey-fuller-test" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Econometrics Simplified
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Giving the Test a Memory: The Augmented Dickey-Fuller Test
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../unit-roots/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Unit Root Series
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../data/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Data & EViews
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../archive/2026/" class="md-tabs__link">
+          
+  
+  
+  Archive
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../category/dummy-variables/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    Econometrics Simplified
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Root Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & EViews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive/2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/dummy-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/heteroskedasticity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heteroskedasticity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/measurement-error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Measurement error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/model-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/multicollinearity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multicollinearity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/omitted-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omitted variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/panel-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panel data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/structural-breaks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structural breaks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/time-series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit roots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-extra-terms-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the extra terms come from
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-man-named-said" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A man named Said
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-many-lags-the-goldilocks-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How many lags? The Goldilocks problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-deterministic-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which deterministic terms?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-the-naive-dickey-fuller-test-0-lags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: the naive Dickey-Fuller test (0 lags)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-the-adf-test-with-automatic-lags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: the ADF test with automatic lags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-test-the-first-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: test the first difference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-the-trend-is-significant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A note on "the trend is significant"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href=".." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-10-23 00:00:00+00:00" class="md-ellipsis">October 23, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../category/unit-roots/">Unit roots</a>, 
+                              <a href="../category/time-series/">Time series</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              7 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="giving-the-test-a-memory-the-augmented-dickey-fuller-test">Giving the Test a Memory: The Augmented Dickey-Fuller Test</h1>
+<p>The plain Dickey-Fuller test makes one heroic assumption: the shocks that push the series around are completely unpredictable, like coin tosses. Real economies are not like that. A good quarter for business tends to be followed by another good quarter. Monsoon effects spill over several months. If yesterday's shock tells you something about today's, the Dickey-Fuller test is reading the wrong table again.</p>
+<p>The cure, invented by Said E. Said and David Dickey, is almost embarrassingly simple: give the regression a memory.</p>
+<!-- more -->
+
+<div class="admonition abstract">
+<p class="admonition-title">Unit Root Series · Chapter 3 of 8</p>
+<p><a href="../kite-and-balloon/">1. The kite and the balloon</a> · <a href="../dickey-fuller/">2. Dickey-Fuller</a> · <strong>3. Augmented Dickey-Fuller</strong> · <a href="../phillips-perron/">4. Phillips-Perron</a> · <a href="../kpss/">5. KPSS</a> · <a href="../dfgls-ng-perron/">6. DF-GLS and Ng-Perron</a> · <a href="../structural-breaks-unit-roots/">7. Structural breaks</a> · <a href="../panel-unit-roots/">8. Panel unit roots</a></p>
+<p>Data: <a href="../downloads/blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P11_adf</strong> · Simulated quarterly data, 1995Q1–2024Q4</p>
+</div>
+<h2 id="where-the-extra-terms-come-from">Where the extra terms come from</h2>
+<p>Suppose the series depends on its last <em>two</em> values, an AR(2):</p>
+<div class="arithmatex">\[
+y_t = \phi_1 y_{t-1} + \phi_2 y_{t-2} + \varepsilon_t
+\]</div>
+<p>Let's rewrite it with the same trick as in Chapter 2. Add and subtract <span class="arithmatex">\(\phi_2 y_{t-1}\)</span> on the right-hand side:</p>
+<div class="arithmatex">\[
+y_t = (\phi_1 + \phi_2)\, y_{t-1} - \phi_2 (y_{t-1} - y_{t-2}) + \varepsilon_t
+\]</div>
+<p>Now subtract <span class="arithmatex">\(y_{t-1}\)</span> from both sides:</p>
+<div class="arithmatex">\[
+\Delta y_t = \underbrace{(\phi_1 + \phi_2 - 1)}_{\delta}\, y_{t-1} \;\underbrace{-\,\phi_2}_{\gamma_1}\, \Delta y_{t-1} + \varepsilon_t
+\]</div>
+<p>This is the Dickey-Fuller regression with one extra term, the lagged change <span class="arithmatex">\(\Delta y_{t-1}\)</span>. And the unit root question is still the question "is <span class="arithmatex">\(\delta = 0\)</span>?", because an AR(2) has a unit root exactly when <span class="arithmatex">\(\phi_1 + \phi_2 = 1\)</span>.</p>
+<details class="note">
+<summary>Why does <span class="arithmatex">\(\phi_1 + \phi_2 = 1\)</span> mean a unit root?</summary>
+<p>The lag polynomial of an AR(2) is <span class="arithmatex">\(1 - \phi_1 z - \phi_2 z^2\)</span>. Put <span class="arithmatex">\(z = 1\)</span>: you get <span class="arithmatex">\(1 - \phi_1 - \phi_2\)</span>. If this is zero, then <span class="arithmatex">\(z = 1\)</span> is a root of the polynomial. A unit root, by definition.</p>
+</details>
+<p>The same algebra works for any number of lags. The <strong>Augmented Dickey-Fuller</strong> (ADF) regression is</p>
+<div class="arithmatex">\[
+\Delta y_t = \alpha + \beta t + \delta\, y_{t-1} + \sum_{j=1}^{p} \gamma_j\, \Delta y_{t-j} + \varepsilon_t
+\]</div>
+<p>The lagged changes soak up the short-run memory. What is left in <span class="arithmatex">\(\varepsilon_t\)</span> is, we hope, pure noise again, and the t-statistic on <span class="arithmatex">\(\delta\)</span> follows the <em>same</em> Dickey-Fuller distribution as before. That is the beauty of it: no new tables needed.</p>
+<h2 id="a-man-named-said">A man named Said</h2>
+<p>In 1984 the journal <em>Biometrika</em> published "Testing for unit roots in autoregressive-moving average models of unknown order" by Said E. Said and David A. Dickey. They showed that even if the true process is more complicated than any finite AR, with moving-average parts as well, the ADF regression still works as long as the number of lags grows slowly with the sample size.</p>
+<p>So the ADF test is, in a sense, what Said said. (Every econometrics teacher has made this joke. I could not resist either.)</p>
+<h2 id="how-many-lags-the-goldilocks-problem">How many lags? The Goldilocks problem</h2>
+<p>Choosing <span class="arithmatex">\(p\)</span> is the one real decision in an ADF test.</p>
+<ul>
+<li><strong>Too few lags:</strong> leftover autocorrelation in the residuals. The test statistic no longer follows the Dickey-Fuller distribution, and the test rejects too often or too rarely.</li>
+<li><strong>Too many lags:</strong> each extra lag costs a degree of freedom and blurs the estimate of <span class="arithmatex">\(\delta\)</span>. The test loses <strong>power</strong>, its ability to spot a kite.</li>
+</ul>
+<p>The usual approach is to let an information criterion choose. EViews starts from a maximum lag given by <strong>Schwert's rule</strong></p>
+<div class="arithmatex">\[
+p_{\max} = \left\lfloor 12 \left(\frac{T}{100}\right)^{1/4} \right\rfloor
+\]</div>
+<p>and picks the lag between 0 and <span class="arithmatex">\(p_{\max}\)</span> with the smallest <strong>Schwarz Information Criterion</strong> (SIC). For 120 quarterly observations, <span class="arithmatex">\(p_{\max} = \lfloor 12 \times 1.2^{0.25}\rfloor = 12\)</span>. Ng and Perron (2001) proposed a "modified" criterion (MAIC) that behaves better when the series is close to a unit root; EViews offers it as an option.</p>
+<h2 id="which-deterministic-terms">Which deterministic terms?</h2>
+<p>The second decision is whether to include a constant, or a constant and a trend. The rule of thumb is: <strong>look at the picture first</strong>. The test should be able to describe the series under both hypotheses.</p>
+<p><img alt="Decision tree for running a unit root test" src="../images/p11_decision_tree.png" /></p>
+<p>A more formal route, the sequential procedure of Dolado, Jenkinson and Sosvilla-Rivero (1990), starts with the most general model and tests whether the trend can be dropped. In practice, the picture usually settles it.</p>
+<h2 id="the-data">The data</h2>
+<p>The sheet <strong>P11_adf</strong> has 30 years of quarterly data on <strong>LGDP</strong>, the natural log of real GDP for an imaginary economy. I built it as a random walk with drift: quarterly growth averages 1.5%, and growth itself is autocorrelated (a good quarter tends to be followed by another one, with <span class="arithmatex">\(\rho = 0.45\)</span>). In truth, LGDP is I(1) and its growth rate is I(0).</p>
+<h3 id="step-1-the-naive-dickey-fuller-test-0-lags">Step 1: the naive Dickey-Fuller test (0 lags)</h3>
+<p>GDP trends upward, so we use a constant and trend (command: <code>lgdp.uroot(adf, trend, lag=0)</code>).</p>
+<div class="highlight"><pre><span></span><code>Null Hypothesis: LGDP has a unit root
+Exogenous: Constant, Linear Trend
+Lag Length: 0 (Fixed)
+
+==============================================================================
+                                                       t-Statistic    Prob.*
+==============================================================================
+Augmented Dickey-Fuller test statistic                   -1.704835    0.7487
+Test critical values:      1% level                    -4.036934
+                           5% level                    -3.448049
+                           10% level                   -3.149068
+==============================================================================
+*MacKinnon (1996) one-sided p-values.
+
+
+Augmented Dickey-Fuller Test Equation
+Dependent Variable: D(LGDP)
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample (adjusted): 1995Q2 2024Q4
+Included observations: 119 after adjustments
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+LGDP(-1)                 -0.036833      0.021605     -1.704835      0.0909
+C                         0.415617      0.235816      1.762462      0.0806
+@TREND("1995Q1")          0.000583      0.000335      1.741198      0.0843
+==============================================================================
+R-squared                 0.026638    Mean dependent var              0.014446
+Adjusted R-squared        0.009856    S.D. dependent var              0.010229
+S.E. of regression        0.010179    Akaike info criterion          -6.312159
+Sum squared resid         0.012018    Schwarz criterion              -6.242097
+Log likelihood            378.5734    Hannan-Quinn criter.           -6.283709
+F-statistic               1.587302    Durbin-Watson stat              1.180423
+Prob(F-statistic)         0.208885
+==============================================================================
+</code></pre></div>
+<p>The test does not reject (p = 0.75). But look at the <strong>Durbin-Watson stat of 1.18</strong> at the bottom of the test equation. A value well below 2 says the residuals are positively autocorrelated. The "pure noise" assumption is broken, so this p-value cannot be trusted, even if it happens to point the right way.</p>
+<h3 id="step-2-the-adf-test-with-automatic-lags">Step 2: the ADF test with automatic lags</h3>
+<p>Now let SIC choose the lags (command: <code>lgdp.uroot(adf, trend, info=sic)</code>).</p>
+<div class="highlight"><pre><span></span><code>Null Hypothesis: LGDP has a unit root
+Exogenous: Constant, Linear Trend
+Lag Length: 1 (Automatic - based on SIC, maxlag=12)
+
+==============================================================================
+                                                       t-Statistic    Prob.*
+==============================================================================
+Augmented Dickey-Fuller test statistic                   -1.865778    0.6722
+Test critical values:      1% level                    -4.037614
+                           5% level                    -3.448373
+                           10% level                   -3.149257
+==============================================================================
+*MacKinnon (1996) one-sided p-values.
+
+
+Augmented Dickey-Fuller Test Equation
+Dependent Variable: D(LGDP)
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample (adjusted): 1995Q3 2024Q4
+Included observations: 118 after adjustments
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+LGDP(-1)                 -0.037238      0.019958     -1.865778      0.0646
+D(LGDP(-1))               0.395690      0.083678      4.728705      0.0000
+C                         0.415339      0.217710      1.907766      0.0589
+@TREND("1995Q1")          0.000575      0.000310      1.854878      0.0662
+==============================================================================
+R-squared                 0.178032    Mean dependent var              0.014632
+Adjusted R-squared        0.156402    S.D. dependent var              0.010069
+S.E. of regression        0.009248    Akaike info criterion          -6.495531
+Sum squared resid         0.009750    Schwarz criterion              -6.401610
+Log likelihood            387.2364    Hannan-Quinn criter.           -6.457396
+F-statistic               8.230537    Durbin-Watson stat              2.155371
+Prob(F-statistic)         0.000053
+==============================================================================
+</code></pre></div>
+<p>Read it from the top:</p>
+<ul>
+<li><strong>Lag Length: 1</strong> chosen by SIC, out of a maximum of 12.</li>
+<li><strong>D(LGDP(-1))</strong> has a coefficient of 0.40 with a t-statistic of 4.7. That is the memory in growth rates (the true value is 0.45). This coefficient <em>can</em> be judged with ordinary t-tests: the lagged differences are stationary, so their t-statistics are well behaved.</li>
+<li><strong>The Durbin-Watson stat is now 2.16.</strong> The residuals look like noise. Good.</li>
+<li><strong>The ADF statistic is −1.87</strong>, against a 5% critical value of −3.45. p = 0.67. <strong>We cannot reject the unit root.</strong></li>
+</ul>
+<p>Also notice the coefficient on LGDP(-1): −0.037. Even in a "unit root" series, OLS rarely gives exactly zero. And remember Chapter 2's warning: its "Prob." of 0.0646 in the equation table is meaningless for this purpose.</p>
+<h3 id="step-3-test-the-first-difference">Step 3: test the first difference</h3>
+<p>If LGDP is I(1), its first difference, the quarterly growth rate, should be stationary. Growth has no trend, so a constant is enough (command: <code>lgdp.uroot(adf, const, dif=1)</code>, or choose "1st difference" in the dialog).</p>
+<div class="highlight"><pre><span></span><code>Null Hypothesis: D(LGDP) has a unit root
+Exogenous: Constant
+Lag Length: 0 (Automatic - based on SIC, maxlag=12)
+
+==============================================================================
+                                                       t-Statistic    Prob.*
+==============================================================================
+Augmented Dickey-Fuller test statistic                   -7.350954    0.0000
+Test critical values:      1% level                    -3.487022
+                           5% level                    -2.886363
+                           10% level                   -2.580009
+==============================================================================
+*MacKinnon (1996) one-sided p-values.
+</code></pre></div>
+<p>−7.35 against −2.89. A clear rejection. The growth rate is a kite.</p>
+<p><strong>Conclusion:</strong> LGDP has one unit root; it is I(1). In plain words: a shock to this economy's GDP never fully goes away, but its growth rate always comes back to its average of about 1.5% a quarter.</p>
+<h2 id="a-note-on-the-trend-is-significant">A note on "the trend is significant"</h2>
+<p>Students often see that @TREND has a t-statistic of 1.85 and conclude something about the trend. Careful: in the ADF equation, the constant and trend coefficients <em>also</em> have non-standard distributions under the null. Dickey and Fuller (1981) tabulated separate critical values for them. As a rule, use the test equation to check the residuals and the lag terms, and use only the top half of the output for the unit root decision.</p>
+<h2 id="the-lesson">The lesson</h2>
+<p>The ADF test is the Dickey-Fuller test with a memory. Add enough lagged changes to clean up the residuals, but not so many that you blind the test. Then always ask the follow-up question: if the level has a unit root, is the first difference stationary?</p>
+<div class="admonition question">
+<p class="admonition-title">Something to think about</p>
+<p>Take a monthly series with a strong seasonal pattern, such as umbrella sales from <a href="../monsoon-dummy/">Post 6</a>. What would SIC need to do with the lags to capture a 12-month pattern? What could go wrong if the maximum lag were only 4? Tell me in the comments.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All data on this blog are simulated for teaching purposes.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="../javascripts/tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>

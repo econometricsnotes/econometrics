@@ -1,0 +1,1412 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Econometric ideas explained simply, with stories, data and EViews output">
+      
+      
+        <meta name="author" content="Prof.(Dr). Santhosh Kumar P K">
+      
+      
+        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/dickey-fuller/">
+      
+      
+        <link rel="prev" href="../kite-and-balloon/">
+      
+      
+        <link rel="next" href="../augmented-dickey-fuller/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>The Test That Needed Its Own Table: Dickey and Fuller - Econometrics Simplified</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+4:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Serif 4";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-test-that-needed-its-own-table-dickey-and-fuller" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Econometrics Simplified
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Test That Needed Its Own Table: Dickey and Fuller
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../unit-roots/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Unit Root Series
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../data/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Data & EViews
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../archive/2026/" class="md-tabs__link">
+          
+  
+  
+  Archive
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../category/dummy-variables/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    Econometrics Simplified
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Root Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & EViews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive/2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/dummy-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/heteroskedasticity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heteroskedasticity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/measurement-error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Measurement error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/model-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/multicollinearity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multicollinearity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/omitted-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omitted variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/panel-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panel data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/structural-breaks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structural breaks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/time-series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit roots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-small-trick-with-a-big-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A small trick with a big name
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-t-table-lies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the t-table lies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-two-men-from-iowa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The two men from Iowa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-versions-of-the-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three versions of the test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-exchange-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The exchange rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-inflation-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The inflation rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href=".." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-10-22 00:00:00+00:00" class="md-ellipsis">October 22, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../category/unit-roots/">Unit roots</a>, 
+                              <a href="../category/time-series/">Time series</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              9 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="the-test-that-needed-its-own-table-dickey-and-fuller">The Test That Needed Its Own Table: Dickey and Fuller</h1>
+<p>You want to know whether <span class="arithmatex">\(\rho = 1\)</span>. You know how to test whether a coefficient equals some number: run the regression, compute a t-statistic, look it up in the t-table at the back of the textbook. Simple.</p>
+<p>Except that here, the t-table at the back of the textbook is wrong. Not slightly wrong. Wrong enough that if you trust it, you will "discover" stationarity in almost half of all random walks. This chapter is about the two statisticians from Iowa who worked out what the right table looks like.</p>
+<!-- more -->
+
+<div class="admonition abstract">
+<p class="admonition-title">Unit Root Series · Chapter 2 of 8</p>
+<p><a href="../kite-and-balloon/">1. The kite and the balloon</a> · <strong>2. Dickey-Fuller</strong> · <a href="../augmented-dickey-fuller/">3. Augmented Dickey-Fuller</a> · <a href="../phillips-perron/">4. Phillips-Perron</a> · <a href="../kpss/">5. KPSS</a> · <a href="../dfgls-ng-perron/">6. DF-GLS and Ng-Perron</a> · <a href="../structural-breaks-unit-roots/">7. Structural breaks</a> · <a href="../panel-unit-roots/">8. Panel unit roots</a></p>
+<p>Data: <a href="../downloads/blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P10_dickey_fuller</strong> · Simulated monthly data, 2005M01–2024M12</p>
+</div>
+<h2 id="a-small-trick-with-a-big-name">A small trick with a big name</h2>
+<p>Start from the AR(1) model of <a href="../kite-and-balloon/">Chapter 1</a>:</p>
+<div class="arithmatex">\[
+y_t = \rho\, y_{t-1} + \varepsilon_t
+\]</div>
+<p>Subtract <span class="arithmatex">\(y_{t-1}\)</span> from both sides:</p>
+<div class="arithmatex">\[
+\underbrace{y_t - y_{t-1}}_{\Delta y_t} = (\rho - 1)\, y_{t-1} + \varepsilon_t
+\]</div>
+<p>Call <span class="arithmatex">\(\delta = \rho - 1\)</span>. Now the question "is <span class="arithmatex">\(\rho = 1\)</span>?" becomes "is <span class="arithmatex">\(\delta = 0\)</span>?":</p>
+<div class="arithmatex">\[
+\Delta y_t = \delta\, y_{t-1} + \varepsilon_t
+\qquad
+H_0: \delta = 0 \ (\text{unit root}) \quad \text{vs} \quad H_1: \delta &lt; 0 \ (\text{stationary})
+\]</div>
+<p>Two things to notice:</p>
+<ol>
+<li>The test is <strong>one-sided</strong>. We only care about <span class="arithmatex">\(\delta &lt; 0\)</span>. An explosive series with <span class="arithmatex">\(\rho &gt; 1\)</span>, a balloon with a rocket attached, is not what economists usually worry about.</li>
+<li>The <strong>null hypothesis is the unit root</strong>. The test assumes "balloon" until the data prove otherwise. Keep this in mind; in <a href="../kpss/">Chapter 5</a> we will meet a test that does the exact opposite.</li>
+</ol>
+<p>Run the regression, compute <span class="arithmatex">\(t = \hat\delta / \operatorname{se}(\hat\delta)\)</span>, and compare it with a critical value. The whole drama is about <em>which</em> critical value.</p>
+<h2 id="why-the-t-table-lies">Why the t-table lies</h2>
+<p>The ordinary t-test assumes the regressor behaves itself: it has a stable mean and variance. Under the null hypothesis, our regressor <span class="arithmatex">\(y_{t-1}\)</span> is a random walk. Its variance grows with time, as we saw in Chapter 1. The usual theory breaks.</p>
+<p>I simulated 20,000 random walks of length 100. For each one I ran the Dickey-Fuller regression with a constant and recorded the t-statistic. In every one of them the true <span class="arithmatex">\(\delta\)</span> is exactly zero. Here is the distribution of those t-statistics, against the normal curve the textbook assumes:</p>
+<p><img alt="Histogram of Dickey-Fuller t-statistics shifted far to the left of the normal curve" src="../images/p10_df_distribution.png" /></p>
+<p>The real distribution is <strong>shifted to the left and skewed</strong>. Its average is about −1.5, not 0. Its 5% point is −2.93, not −1.645.</p>
+<p>Now the scary number: <strong>45% of these t-statistics are below −1.645</strong>. If you used the ordinary one-sided t-table at 5%, you would declare a random walk "stationary" in 45 cases out of 100. Your "5% test" would actually be a 45% test.</p>
+<details class="note">
+<summary>Derivation: where the strange distribution comes from (click to open)</summary>
+<p>Take the simplest case, no constant, <span class="arithmatex">\(y_0 = 0\)</span>, and true <span class="arithmatex">\(\rho = 1\)</span>. The OLS estimate is</p>
+<div class="arithmatex">\[
+\hat\rho - 1 = \frac{\sum y_{t-1}\varepsilon_t}{\sum y_{t-1}^2}
+\]</div>
+<p>Look at the numerator. Because <span class="arithmatex">\(y_t = y_{t-1} + \varepsilon_t\)</span>, squaring gives <span class="arithmatex">\(y_t^2 = y_{t-1}^2 + 2y_{t-1}\varepsilon_t + \varepsilon_t^2\)</span>, so</p>
+<div class="arithmatex">\[
+y_{t-1}\varepsilon_t = \tfrac12\left(y_t^2 - y_{t-1}^2 - \varepsilon_t^2\right)
+\]</div>
+<p>Add this up from <span class="arithmatex">\(t = 1\)</span> to <span class="arithmatex">\(T\)</span>. The middle terms cancel like a telescope:</p>
+<div class="arithmatex">\[
+\sum_{t=1}^{T} y_{t-1}\varepsilon_t = \tfrac12\left(y_T^2 - \sum_{t=1}^T \varepsilon_t^2\right)
+\]</div>
+<p>Divide by <span class="arithmatex">\(T\sigma^2\)</span>. Since <span class="arithmatex">\(y_T\)</span> is a sum of <span class="arithmatex">\(T\)</span> shocks, <span class="arithmatex">\(y_T/(\sigma\sqrt{T})\)</span> is approximately standard normal, so <span class="arithmatex">\(y_T^2/(T\sigma^2)\)</span> is approximately <span class="arithmatex">\(\chi^2_1\)</span>. And <span class="arithmatex">\(\sum\varepsilon_t^2/(T\sigma^2) \to 1\)</span>. Therefore</p>
+<div class="arithmatex">\[
+\frac{1}{T\sigma^2}\sum y_{t-1}\varepsilon_t \;\longrightarrow\; \tfrac12\left(\chi^2_1 - 1\right)
+\]</div>
+<p>A <span class="arithmatex">\(\chi^2_1\)</span> variable has mean 1 but median only 0.45. So <span class="arithmatex">\(\chi^2_1 - 1\)</span> is <strong>negative more than two-thirds of the time</strong>. That is the source of the leftward shift: the numerator of <span class="arithmatex">\(\hat\rho - 1\)</span> is usually negative even when the truth is <span class="arithmatex">\(\rho = 1\)</span>.</p>
+<p>The denominator also does not settle down to a constant. In the language of advanced theory, both pieces converge to functionals of a Brownian motion <span class="arithmatex">\(W(r)\)</span>:</p>
+<div class="arithmatex">\[
+T(\hat\rho - 1) \Rightarrow \frac{\tfrac12\left(W(1)^2 - 1\right)}{\int_0^1 W(r)^2\,dr}
+\]</div>
+<p>Two more surprises hide in this formula. First, we multiply by <span class="arithmatex">\(T\)</span>, not <span class="arithmatex">\(\sqrt{T}\)</span>: the estimate of <span class="arithmatex">\(\rho\)</span> converges to 1 <em>faster</em> than usual. Econometricians call this <strong>superconsistency</strong>. Second, the limit is a ratio of random quantities, not a normal distribution. No t-table can describe it, so someone had to simulate it.</p>
+</details>
+<h2 id="the-two-men-from-iowa">The two men from Iowa</h2>
+<p>That someone was David Dickey, a PhD student at Iowa State University, and his supervisor, Wayne Fuller.</p>
+<p>Fuller is an unusual hero for a time-series story. He trained in agricultural economics at Iowa State, and he is best known as one of the giants of <strong>survey sampling</strong>: how to design and analyse surveys of farms, households and people. A conversation with him was published in the journal <em>Survey Methodology</em> in 2026, recounting his early life and his work, including the Dickey-Fuller test.</p>
+<p>In the 1970s there were no laptops. There was also no formula that would give the critical values directly. So Dickey and Fuller did what I did for the chart above, on the slow computers of the day: they generated a large number of artificial random walks, ran the regression on each, and tabulated the results. The critical values appeared in Fuller's 1976 book <em>Introduction to Statistical Time Series</em>, and the theory in two papers: Dickey and Fuller (1979) in the <em>Journal of the American Statistical Association</em>, and (1981) in <em>Econometrica</em>. They are among the most cited papers in statistics.</p>
+<p>David Dickey went on to a long career at North Carolina State University, where he is a William Neal Reynolds Professor of Statistics. Later, James MacKinnon of Queen's University in Canada used much larger simulations to fit formulas for the critical values at any sample size. That is why every EViews unit root output ends with the line "*MacKinnon (1996) one-sided p-values".</p>
+<h2 id="three-versions-of-the-test">Three versions of the test</h2>
+<p>Real series rarely wander around zero. So the regression comes in three flavours:</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Regression</th>
+<th>Use when the series…</th>
+<th>5% critical value (large samples)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td><span class="arithmatex">\(\Delta y_t = \delta y_{t-1} + \varepsilon_t\)</span></td>
+<td>wanders around zero</td>
+<td>−1.94</td>
+</tr>
+<tr>
+<td>Constant</td>
+<td><span class="arithmatex">\(\Delta y_t = \alpha + \delta y_{t-1} + \varepsilon_t\)</span></td>
+<td>wanders around a non-zero level</td>
+<td>−2.86</td>
+</tr>
+<tr>
+<td>Constant + trend</td>
+<td><span class="arithmatex">\(\Delta y_t = \alpha + \beta t + \delta y_{t-1} + \varepsilon_t\)</span></td>
+<td>has a clear upward or downward trend</td>
+<td>−3.41</td>
+</tr>
+</tbody>
+</table>
+<p>Every deterministic term you add pushes the critical value further left. The test has to work harder to prove stationarity, because a constant and a trend can themselves mimic some of the wandering.</p>
+<details class="info">
+<summary>What does each version compare?</summary>
+<ul>
+<li><strong>Constant:</strong> a random walk (with no drift) versus a stationary series around a fixed mean.</li>
+<li><strong>Constant + trend:</strong> a random walk <em>with drift</em> versus a stationary series around a straight-line trend. A random walk with drift, <span class="arithmatex">\(y_t = \mu + y_{t-1} + \varepsilon_t\)</span>, can be written <span class="arithmatex">\(y_t = y_0 + \mu t + \sum \varepsilon_s\)</span>: a trend plus a balloon. A trend-stationary series is <span class="arithmatex">\(y_t = a + bt + u_t\)</span> with <span class="arithmatex">\(u_t\)</span> a kite. Both trend upwards. Only one of them ever returns to its trend line.</li>
+</ul>
+</details>
+<h2 id="the-data">The data</h2>
+<p>The sheet <strong>P10_dickey_fuller</strong> has 240 months of two simulated series:</p>
+<ul>
+<li><strong>EXRATE</strong>: an exchange rate in rupees per dollar. It is a random walk with a small drift (built to look like a currency that slowly weakens).</li>
+<li><strong>INFL</strong>: an inflation rate in percent. It is a stationary AR(1) with <span class="arithmatex">\(\rho = 0.75\)</span> around 6%.</li>
+</ul>
+<p>EViews: open the series, <strong>View → Unit Root Tests → Standard Unit Root Test</strong>, choose "Augmented Dickey-Fuller", "Level", and set the lag length to a <strong>fixed 0</strong>. Zero lags makes ADF the plain Dickey-Fuller test.</p>
+<h3 id="the-exchange-rate">The exchange rate</h3>
+<p>The rupee has drifted upwards over the years, so we include a constant and a trend (command: <code>exrate.uroot(adf, trend, lag=0)</code>).</p>
+<div class="highlight"><pre><span></span><code>Null Hypothesis: EXRATE has a unit root
+Exogenous: Constant, Linear Trend
+Lag Length: 0 (Fixed)
+
+==============================================================================
+                                                       t-Statistic    Prob.*
+==============================================================================
+Augmented Dickey-Fuller test statistic                   -2.738369    0.2205
+Test critical values:      1% level                    -3.997157
+                           5% level                    -3.429021
+                           10% level                   -3.137939
+==============================================================================
+*MacKinnon (1996) one-sided p-values.
+
+
+Augmented Dickey-Fuller Test Equation
+Dependent Variable: D(EXRATE)
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample (adjusted): 2005M02 2024M12
+Included observations: 239 after adjustments
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+EXRATE(-1)               -0.056564      0.020656     -2.738369      0.0066
+C                         2.326021      0.826930      2.812838      0.0053
+@TREND("2005M01")         0.007952      0.002900      2.742513      0.0066
+==============================================================================
+R-squared                 0.031367    Mean dependent var              0.114100
+Adjusted R-squared        0.023158    S.D. dependent var              0.815209
+S.E. of regression        0.805715    Akaike info criterion           2.418299
+Sum squared resid         153.2056    Schwarz criterion               2.461937
+Log likelihood           -285.9868    Hannan-Quinn criter.            2.435884
+F-statistic               3.821102    Durbin-Watson stat              2.005348
+Prob(F-statistic)         0.023271
+==============================================================================
+</code></pre></div>
+<p>How to read it, in three steps:</p>
+<ol>
+<li><strong>The test statistic</strong> is −2.74. That is just the t-statistic on EXRATE(-1) in the equation below.</li>
+<li><strong>The 5% critical value</strong> is −3.43. Our statistic is <em>not</em> more negative than that.</li>
+<li><strong>The p-value</strong> is 0.22. We cannot reject the unit root. The exchange rate looks like a balloon with a slow drift, which is exactly how I built it.</li>
+</ol>
+<p>Now spot the trap. In the test equation, EXRATE(-1) has a "Prob." of 0.0066. A careless reader shouts "significant!" and declares the series stationary. <strong>Never use the Prob. column of the test equation for the unit root coefficient.</strong> That number comes from the ordinary t-distribution, which is the very thing Dickey and Fuller showed does not apply. The only p-value that counts is the one at the top, 0.2205.</p>
+<h3 id="the-inflation-rate">The inflation rate</h3>
+<p>Inflation has no trend, so a constant is enough (command: <code>infl.uroot(adf, const, lag=0)</code>).</p>
+<div class="highlight"><pre><span></span><code>Null Hypothesis: INFL has a unit root
+Exogenous: Constant
+Lag Length: 0 (Fixed)
+
+==============================================================================
+                                                       t-Statistic    Prob.*
+==============================================================================
+Augmented Dickey-Fuller test statistic                   -6.143829    0.0000
+Test critical values:      1% level                    -3.458011
+                           5% level                    -2.873710
+                           10% level                   -2.573256
+==============================================================================
+*MacKinnon (1996) one-sided p-values.
+
+
+Augmented Dickey-Fuller Test Equation
+Dependent Variable: D(INFL)
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample (adjusted): 2005M02 2024M12
+Included observations: 239 after adjustments
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+INFL(-1)                 -0.271086      0.044123     -6.143829      0.0000
+C                         1.591091      0.265151      6.000695      0.0000
+==============================================================================
+R-squared                 0.137387    Mean dependent var             -0.002678
+Adjusted R-squared        0.133747    S.D. dependent var              0.911558
+S.E. of regression        0.848411    Akaike info criterion           2.517430
+Sum squared resid         170.5930    Schwarz criterion               2.546522
+Log likelihood           -298.8329    Hannan-Quinn criter.            2.529154
+F-statistic               37.74663    Durbin-Watson stat              2.184841
+Prob(F-statistic)         0.000000
+==============================================================================
+</code></pre></div>
+<p>Here the statistic is −6.14, far beyond the 1% critical value of −3.46. We reject the unit root: inflation is a kite.</p>
+<p>The coefficient tells us more. <span class="arithmatex">\(\hat\delta = -0.271\)</span>, so <span class="arithmatex">\(\hat\rho = 1 + \hat\delta = 0.729\)</span>, close to the true 0.75. The half-life of an inflation shock is <span class="arithmatex">\(\ln 0.5 / \ln 0.729 \approx 2.2\)</span> months. A spike in inflation is half gone within about two months.</p>
+<p>And the constant? In a stationary series, <span class="arithmatex">\(\alpha = (1-\rho)\mu\)</span>, so the long-run mean is <span class="arithmatex">\(\hat\mu = \hat\alpha / (1-\hat\rho) = 1.591 / 0.271 \approx 5.9\%\)</span>. The kite's home is just under 6%.</p>
+<h2 id="the-lesson">The lesson</h2>
+<p>The Dickey-Fuller regression looks like any other regression, but it lives in a different world. The coefficient on <span class="arithmatex">\(y_{t-1}\)</span> must be judged against Dickey-Fuller critical values, not against the t-table. A test statistic of −2.5 that would make you famous in an ordinary regression means nothing here.</p>
+<p>There is a catch that we have ignored so far: we assumed the gusts of wind <span class="arithmatex">\(\varepsilon_t\)</span> are independent from one minute to the next. In real data they rarely are. Fixing that is the job of <a href="../augmented-dickey-fuller/">Chapter 3</a>.</p>
+<div class="admonition question">
+<p class="admonition-title">Something to think about</p>
+<p>The test always starts from "unit root" and needs strong evidence to reject it. With only 30 years of annual data, what do you expect to happen when the true <span class="arithmatex">\(\rho\)</span> is 0.9? Is "I could not reject a unit root" the same as "I found a unit root"? Answer in the comments; <a href="../dfgls-ng-perron/">Chapter 6</a> has the numbers.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All data on this blog are simulated for teaching purposes.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="../javascripts/tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>

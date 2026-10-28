@@ -1,0 +1,1477 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Econometric ideas explained simply, with stories, data and EViews output">
+      
+      
+        <meta name="author" content="Prof.(Dr). Santhosh Kumar P K">
+      
+      
+        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/kite-and-balloon/">
+      
+      
+        <link rel="prev" href="../rules-changed/">
+      
+      
+        <link rel="next" href="../dickey-fuller/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>The Kite and the Balloon: What on Earth Is a Unit Root? - Econometrics Simplified</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+4:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Serif 4";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-kite-and-the-balloon-what-on-earth-is-a-unit-root" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Econometrics Simplified
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Kite and the Balloon: What on Earth Is a Unit Root?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../unit-roots/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Unit Root Series
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../data/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Data & EViews
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../archive/2026/" class="md-tabs__link">
+          
+  
+  
+  Archive
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../category/dummy-variables/" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    Econometrics Simplified
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Root Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & EViews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../archive/2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/dummy-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/heteroskedasticity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heteroskedasticity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/measurement-error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Measurement error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/model-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/multicollinearity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multicollinearity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/omitted-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omitted variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/panel-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panel data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/structural-breaks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structural breaks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/time-series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../category/unit-roots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit roots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-drunk-man-a-mosquito-and-a-letter-to-nature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A drunk man, a mosquito and a letter to Nature
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-model-one-number-decides-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model: one number decides everything
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The model: one number decides everything">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-to-a-gust-of-wind-a-short-derivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens to a gust of wind? A short derivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-variance-fixed-band-versus-widening-trumpet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The variance: fixed band versus widening trumpet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-is-it-called-a-unit-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why is it called a "unit root"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrated-series-and-differencing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integrated series and differencing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-correlogram-a-lie-detector-for-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The correlogram: a lie detector for memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-should-anyone-care" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why should anyone care?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-little-game" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A little game
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href=".." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-10-21 00:00:00+00:00" class="md-ellipsis">October 21, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../category/unit-roots/">Unit roots</a>, 
+                              <a href="../category/time-series/">Time series</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              9 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="the-kite-and-the-balloon-what-on-earth-is-a-unit-root">The Kite and the Balloon: What on Earth Is a Unit Root?</h1>
+<p>Two children are standing in a field on a windy afternoon. One is flying a kite. The other is holding a balloon. A gust of wind arrives and pushes both of them sideways. A minute later the kite is back roughly where it was, bobbing about at the end of its string. The balloon slipped out of a small hand and is now drifting towards the next village. Nobody is going to see it again.</p>
+<p>That, in one picture, is the difference between a <strong>stationary</strong> time series and one with a <strong>unit root</strong>. This post starts a new series on this blog: eight chapters on how econometricians tell the kite from the balloon.</p>
+<!-- more -->
+
+<div class="admonition abstract">
+<p class="admonition-title">Unit Root Series · Chapter 1 of 8</p>
+<p><strong>1. The kite and the balloon</strong> · <a href="../dickey-fuller/">2. Dickey-Fuller</a> · <a href="../augmented-dickey-fuller/">3. Augmented Dickey-Fuller</a> · <a href="../phillips-perron/">4. Phillips-Perron</a> · <a href="../kpss/">5. KPSS</a> · <a href="../dfgls-ng-perron/">6. DF-GLS and Ng-Perron</a> · <a href="../structural-breaks-unit-roots/">7. Structural breaks</a> · <a href="../panel-unit-roots/">8. Panel unit roots</a></p>
+<p>Data: <a href="../downloads/blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P9_kite_balloon</strong> · Simulated data, 200 observations</p>
+</div>
+<p><img alt="A cartoon of a kite on a string and a balloon floating away" src="../images/p9_cartoon_kite_balloon.png" /></p>
+<h2 id="a-drunk-man-a-mosquito-and-a-letter-to-nature">A drunk man, a mosquito and a letter to <em>Nature</em></h2>
+<p>The idea behind this whole series was born in 1905, in a letter to the journal <em>Nature</em>. Karl Pearson, one of the founders of modern statistics, asked readers for help with what he called "the problem of the random walk". A man starts at a lamp post, takes a step of fixed length in a random direction, then another, then another. After <em>n</em> steps, where is he likely to be?</p>
+<p>The funny part is where the question came from. Pearson had been helping Sir Ronald Ross, who won the Nobel Prize in Medicine for showing that mosquitoes carry malaria. Ross wanted to know how mosquitoes spread out from a breeding pond. Pearson told Ross that mathematicians would ignore a "mosquito problem", so he dressed it up as a walking man instead. The library of the London School of Hygiene &amp; Tropical Medicine still has the correspondence.</p>
+<p>Lord Rayleigh answered within a week. Pearson then summed up the result with a line every econometrics student should know. In open country, he wrote, the most probable place to find a drunken man who can still stand is somewhere near his starting point.</p>
+<p>Hold on to that sentence. It is true, and it is also a trap. The drunk's <em>most likely</em> position is near the lamp post, but the <em>range</em> of places he could be grows every minute. That growing range is the heart of a unit root.</p>
+<h2 id="the-model-one-number-decides-everything">The model: one number decides everything</h2>
+<p>Let the height of our kite or balloon be <span class="arithmatex">\(y_t\)</span> in minute <span class="arithmatex">\(t\)</span>. The simplest model of a series that depends on its own past is the <strong>first-order autoregression</strong>, AR(1):</p>
+<div class="arithmatex">\[
+y_t = \rho \, y_{t-1} + \varepsilon_t
+\]</div>
+<p>Here <span class="arithmatex">\(\varepsilon_t\)</span> is the gust of wind in minute <span class="arithmatex">\(t\)</span>: random, mean zero, variance <span class="arithmatex">\(\sigma^2\)</span>, independent from one minute to the next. Everything depends on the single number <span class="arithmatex">\(\rho\)</span> (rho).</p>
+<ul>
+<li>If <span class="arithmatex">\(|\rho| &lt; 1\)</span>, the series is <strong>stationary</strong>: the kite.</li>
+<li>If <span class="arithmatex">\(\rho = 1\)</span>, the series is a <strong>random walk</strong>: the balloon.</li>
+</ul>
+<h3 id="what-happens-to-a-gust-of-wind-a-short-derivation">What happens to a gust of wind? A short derivation</h3>
+<p>Substitute the equation into itself again and again:</p>
+<div class="arithmatex">\[
+y_t = \rho y_{t-1} + \varepsilon_t = \rho(\rho y_{t-2} + \varepsilon_{t-1}) + \varepsilon_t = \dots
+\]</div>
+<div class="arithmatex">\[
+y_t = \rho^t y_0 + \varepsilon_t + \rho\,\varepsilon_{t-1} + \rho^2 \varepsilon_{t-2} + \dots + \rho^{t-1}\varepsilon_1
+\]</div>
+<p>Read the right-hand side slowly. A gust that hit <span class="arithmatex">\(j\)</span> minutes ago is still in today's height, multiplied by <span class="arithmatex">\(\rho^j\)</span>.</p>
+<ul>
+<li>With <span class="arithmatex">\(\rho = 0.6\)</span>, a gust from 5 minutes ago has weight <span class="arithmatex">\(0.6^5 = 0.08\)</span>. Almost forgotten.</li>
+<li>With <span class="arithmatex">\(\rho = 1\)</span>, the weight is <span class="arithmatex">\(1^j = 1\)</span> for ever. <strong>Nothing is ever forgotten.</strong></li>
+</ul>
+<p>That is why a series with <span class="arithmatex">\(\rho = 1\)</span> is said to have <strong>permanent shocks</strong> or <strong>infinite memory</strong>.</p>
+<p>A useful way to feel <span class="arithmatex">\(\rho\)</span> is the <strong>half-life</strong>: how long until half of a shock has gone. Solve <span class="arithmatex">\(\rho^h = 0.5\)</span>:</p>
+<div class="arithmatex">\[
+h = \frac{\ln 0.5}{\ln \rho}
+\]</div>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(\rho\)</span></th>
+<th>Half-life of a shock</th>
+<th>Feels like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.60</td>
+<td>1.4 periods</td>
+<td>a kite on a short string</td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>6.6 periods</td>
+<td>a kite on a long string</td>
+</tr>
+<tr>
+<td>0.99</td>
+<td>69 periods</td>
+<td>a kite on a very, very long string</td>
+</tr>
+<tr>
+<td>1.00</td>
+<td>never</td>
+<td>a balloon</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-variance-fixed-band-versus-widening-trumpet">The variance: fixed band versus widening trumpet</h3>
+<details class="note">
+<summary>Derivation: the variance of a stationary AR(1) (click to open)</summary>
+<p>If the series is stationary, its variance is the same in every period. Call it <span class="arithmatex">\(\gamma_0\)</span>. Take the variance of both sides of <span class="arithmatex">\(y_t = \rho y_{t-1} + \varepsilon_t\)</span>. Because <span class="arithmatex">\(\varepsilon_t\)</span> is independent of <span class="arithmatex">\(y_{t-1}\)</span>:</p>
+<div class="arithmatex">\[
+\gamma_0 = \rho^2 \gamma_0 + \sigma^2 \quad\Longrightarrow\quad \gamma_0 = \frac{\sigma^2}{1-\rho^2}
+\]</div>
+<p>This only makes sense if <span class="arithmatex">\(1 - \rho^2 &gt; 0\)</span>, that is <span class="arithmatex">\(|\rho| &lt; 1\)</span>. As <span class="arithmatex">\(\rho \to 1\)</span> the variance explodes. The formula is telling us that a random walk has no fixed variance at all.</p>
+</details>
+<details class="note">
+<summary>Derivation: the variance of a random walk (click to open)</summary>
+<p>With <span class="arithmatex">\(\rho = 1\)</span> and starting value <span class="arithmatex">\(y_0\)</span>:</p>
+<div class="arithmatex">\[
+y_t = y_0 + \varepsilon_1 + \varepsilon_2 + \dots + \varepsilon_t
+\]</div>
+<p>The shocks are independent, so their variances add up:</p>
+<div class="arithmatex">\[
+\operatorname{Var}(y_t \mid y_0) = t\,\sigma^2
+\]</div>
+<p>The variance grows in a straight line with time. The standard deviation grows like <span class="arithmatex">\(\sqrt{t}\)</span>.</p>
+</details>
+<p>So a stationary series lives inside a band of fixed width. A random walk lives inside a trumpet that keeps opening. Here are 150 simulated kites and 150 simulated balloons, all hit by exactly the same gusts:</p>
+<p><img alt="150 stationary paths inside a fixed band, and 150 random walks inside a widening band" src="../images/p9_fan.png" /></p>
+<p>This also settles Pearson's drunk. The centre of the trumpet is the lamp post, so the <em>most likely</em> single spot is near home. But the trumpet keeps widening. After 100 steps he is typically 10 steps away; after 10,000 steps, typically 100 steps away.</p>
+<h3 id="why-is-it-called-a-unit-root">Why is it called a "unit root"?</h3>
+<p>Write the lag operator <span class="arithmatex">\(L\)</span>, which shifts a series back one period: <span class="arithmatex">\(L y_t = y_{t-1}\)</span>. The AR(1) model becomes</p>
+<div class="arithmatex">\[
+(1 - \rho L)\, y_t = \varepsilon_t
+\]</div>
+<p>Treat <span class="arithmatex">\(1 - \rho z = 0\)</span> as an ordinary equation in <span class="arithmatex">\(z\)</span>. Its root is <span class="arithmatex">\(z = 1/\rho\)</span>. When <span class="arithmatex">\(\rho = 1\)</span>, the root is exactly 1: a <strong>unit</strong> root. That's all the name means. The fancier statement "all roots lie outside the unit circle" just says <span class="arithmatex">\(|1/\rho| &gt; 1\)</span>, which is <span class="arithmatex">\(|\rho| &lt; 1\)</span>: the kite.</p>
+<h3 id="integrated-series-and-differencing">Integrated series and differencing</h3>
+<p>If <span class="arithmatex">\(y_t\)</span> is a random walk, its first difference is pure noise:</p>
+<div class="arithmatex">\[
+\Delta y_t = y_t - y_{t-1} = \varepsilon_t
+\]</div>
+<p>Econometricians say <span class="arithmatex">\(y_t\)</span> is <strong>integrated of order one</strong>, written I(1): difference it once and it becomes stationary, I(0). The balloon's <em>height</em> wanders, but its <em>change</em> in height each minute is just the gust.</p>
+<h2 id="the-data">The data</h2>
+<p>The sheet <strong>P9_kite_balloon</strong> has 200 minutes of two simulated series:</p>
+<ul>
+<li><strong>KITE</strong>: an AR(1) with <span class="arithmatex">\(\rho = 0.6\)</span> around a mean of 50 metres.</li>
+<li><strong>BALLOON</strong>: a random walk starting at 50 metres.</li>
+</ul>
+<p>Both are driven by gusts with the same standard deviation of 3 metres.</p>
+<p><img alt="Time plots of KITE and BALLOON" src="../images/p9_kite_balloon_series.png" /></p>
+<p>Look at the numbers. In the first 100 minutes the kite averages 50.2 m, and in the last 100 minutes 51.1 m. The balloon averages 27.4 m in the first half and 71.2 m in the second. Its spread more than doubles too, from 8.4 m to 17.6 m. The kite has a home. The balloon does not.</p>
+<h3 id="the-correlogram-a-lie-detector-for-memory">The correlogram: a lie detector for memory</h3>
+<p>The <strong>autocorrelation function</strong> (AC) measures how strongly today's value is related to the value <span class="arithmatex">\(k\)</span> periods ago. In EViews, open the series and choose <strong>View → Correlogram</strong>, level, 12 lags (command: <code>kite.correl(12)</code>).</p>
+<div class="highlight"><pre><span></span><code>Date: 10/27/26   Time: 21:45
+Sample: 1 200
+Included observations: 200
+
+Autocorrelation     Partial Correlation            AC      PAC    Q-Stat    Prob
+
+        |******  |          |******  |      1   0.583    0.583     68.94   0.000
+        |***     |         *|        |      2   0.274   -0.100     84.26   0.000
+        |**      |          |*       |      3   0.151    0.052     88.96   0.000
+        |*       |          |        |      4   0.115    0.036     91.69   0.000
+        |*       |          |        |      5   0.054   -0.045     92.29   0.000
+       *|        |         *|        |      6  -0.053   -0.106     92.89   0.000
+       *|        |         *|        |      7  -0.128   -0.067     96.32   0.000
+      **|        |         *|        |      8  -0.157   -0.057    101.47   0.000
+       *|        |          |*       |      9  -0.088    0.067    103.11   0.000
+       *|        |         *|        |     10  -0.083   -0.065    104.57   0.000
+       *|        |          |        |     11  -0.091   -0.015    106.34   0.000
+       *|        |          |        |     12  -0.057    0.032    107.05   0.000
+</code></pre></div>
+<p>For the kite, the first autocorrelation is 0.58, close to the true 0.6. By lag 4 it is down to about 0.1 and it never comes back. Memory fades fast, exactly as <span class="arithmatex">\(\rho^k\)</span> predicts.</p>
+<div class="highlight"><pre><span></span><code>Date: 10/27/26   Time: 21:45
+Sample: 1 200
+Included observations: 200
+
+Autocorrelation     Partial Correlation            AC      PAC    Q-Stat    Prob
+
+        |********|          |********|      1   0.989    0.998    198.71   0.000
+        |********|          |        |      2   0.979    0.024    394.15   0.000
+        |********|          |        |      3   0.968    0.038    586.15   0.000
+        |********|         *|        |      4   0.954   -0.072    773.83   0.000
+        |********|          |        |      5   0.942    0.029    957.48   0.000
+        |********|          |*       |      6   0.930    0.098   1137.56   0.000
+        |********|         *|        |      7   0.917   -0.068   1313.76   0.000
+        |********|         *|        |      8   0.905   -0.050   1486.28   0.000
+        |********|          |*       |      9   0.894    0.064   1655.33   0.000
+        |********|         *|        |     10   0.880   -0.069   1819.85   0.000
+        |********|         *|        |     11   0.863   -0.082   1979.20   0.000
+        |********|         *|        |     12   0.847   -0.062   2133.37   0.000
+</code></pre></div>
+<p>For the balloon, the autocorrelations start at 0.99 and are still 0.85 at lag 12. They shrink so slowly that you can almost hear them yawn. The partial autocorrelation has one giant spike at lag 1 and almost nothing else. That pattern, <strong>a slowly dying AC with one big PAC spike near 1</strong>, is the classic fingerprint of a unit root.</p>
+<details class="note">
+<summary>Why does the random walk's autocorrelation stay so high?</summary>
+<p>For a random walk started at zero, <span class="arithmatex">\(y_t\)</span> and <span class="arithmatex">\(y_{t-k}\)</span> share all the shocks up to time <span class="arithmatex">\(t-k\)</span>. A little algebra gives</p>
+<div class="arithmatex">\[
+\operatorname{Corr}(y_t, y_{t-k}) = \sqrt{\frac{t-k}{t}}
+\]</div>
+<p>With <span class="arithmatex">\(t = 200\)</span> and <span class="arithmatex">\(k = 12\)</span>, this is <span class="arithmatex">\(\sqrt{188/200} = 0.97\)</span>. The correlation is close to 1 for any lag that is small compared with the length of the sample.</p>
+</details>
+<h2 id="why-should-anyone-care">Why should anyone care?</h2>
+<p>Because the balloon breaks ordinary regression. Remember <a href="../random-walks/">Post 2</a> on this blog: two completely unrelated random walks, popcorn sales and goldfish sales, produced a t-statistic of 22. Clive Granger and Paul Newbold showed in 1974 how often this happens, and called such results "spurious regressions".</p>
+<p>Granger's story has a happy ending. David Hendry criticised the Granger–Newbold work, and Granger set out to prove Hendry wrong. In the process he discovered <strong>cointegration</strong>: the idea that two wandering series can wander <em>together</em>. Granger shared the 2003 Nobel Prize in Economics for it, with Robert Engle. Hendry and Jennifer Castle tell the story in their tribute <em>Clive W.J. Granger and Cointegration</em>. Losing an argument rarely pays that well.</p>
+<p>So before you regress anything on anything over time, you need to know whether you are holding kites or balloons. The rest of this series is about how to find out:</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>Test</th>
+<th>The question it asks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Dickey-Fuller</td>
+<td>Is <span class="arithmatex">\(\rho\)</span> equal to 1?</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Augmented Dickey-Fuller</td>
+<td>Same, when the gusts are themselves correlated</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Phillips-Perron</td>
+<td>Same, fixed up without adding lags</td>
+</tr>
+<tr>
+<td>5</td>
+<td>KPSS</td>
+<td>Turn the question around: is the series stationary?</td>
+</tr>
+<tr>
+<td>6</td>
+<td>DF-GLS, Ng-Perron</td>
+<td>Sharper eyes for series that are <em>almost</em> balloons</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Zivot-Andrews</td>
+<td>What if the kite's string was moved once?</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Panel tests</td>
+<td>Twenty kites and balloons at once</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-little-game">A little game</h2>
+<p>Here are some real-world series. Kite or balloon? (Answers are argued about in journals, so there may be more than one right answer.)</p>
+<ol>
+<li>The rupee–dollar exchange rate.</li>
+<li>India's monthly inflation rate.</li>
+<li>The Sensex.</li>
+<li>The unemployment rate.</li>
+<li>The interest rate gap between a 10-year and a 1-year government bond.</li>
+</ol>
+<p>Most economists would say the exchange rate and the Sensex look like balloons. Inflation, unemployment and the spread are usually treated as kites, though some of them have very long strings. Louis Bachelier argued as early as 1900, in his Paris thesis on speculation, that stock prices move like a random walk. He was ignored for half a century.</p>
+<h2 id="the-lesson">The lesson</h2>
+<p>One number, <span class="arithmatex">\(\rho\)</span>, separates a world where shocks fade from a world where they last for ever. When <span class="arithmatex">\(\rho &lt; 1\)</span>, history eventually stops mattering. When <span class="arithmatex">\(\rho = 1\)</span>, every gust of wind that ever blew is still in today's number.</p>
+<div class="admonition question">
+<p class="admonition-title">Something to think about</p>
+<p>Suppose a country's GDP is a balloon. A bad monsoon cuts GDP by 2% this year. What does the unit root say about GDP ten years from now? Now suppose GDP is a kite. What changes? Which story do you believe for India, and why? Leave your answer in the comments.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All data on this blog are simulated for teaching purposes.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="../javascripts/tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>
