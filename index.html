@@ -12,31 +12,29 @@
         <meta name="author" content="Prof.(Dr). Santhosh Kumar P K">
       
       
-        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/data/">
+        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/index.html">
       
       
-        <link rel="prev" href="../unit-roots/">
       
-      
-        <link rel="next" href="../about/">
+        <link rel="next" href="unit-roots.html">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Data & EViews - Econometrics Simplified</title>
+        <title>Econometrics Simplified</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-eviews" class="md-skip">
+        <a href="#blog" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+    <a href="index.html" title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
@@ -116,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data & EViews
+              Blog
             
           </span>
         </div>
@@ -154,46 +152,6 @@
     
     
     
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
-    
     
   </nav>
   
@@ -213,9 +171,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="index.html" class="md-tabs__link">
         
   
   
@@ -234,7 +194,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../unit-roots/" class="md-tabs__link">
+      <a href="unit-roots.html" class="md-tabs__link">
         
   
   
@@ -251,11 +211,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="data.html" class="md-tabs__link">
         
   
   
@@ -274,7 +232,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../about/" class="md-tabs__link">
+      <a href="about.html" class="md-tabs__link">
         
   
   
@@ -295,7 +253,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../archive/2026/" class="md-tabs__link">
+        <a href="archive-2026.html" class="md-tabs__link">
           
   
   
@@ -315,7 +273,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../category/dummy-variables/" class="md-tabs__link">
+        <a href="category-dummy-variables.html" class="md-tabs__link">
           
   
   
@@ -349,7 +307,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+    <a href="index.html" title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
@@ -364,12 +322,23 @@
       
   
   
-  
     
   
   
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+    
+      
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -385,6 +354,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -396,7 +366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../unit-roots/" class="md-nav__link">
+      <a href="unit-roots.html" class="md-nav__link">
         
   
   
@@ -420,19 +390,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="data.html" class="md-nav__link">
         
   
   
@@ -448,7 +409,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -460,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="about.html" class="md-nav__link">
         
   
   
@@ -539,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../archive/2026/" class="md-nav__link">
+      <a href="archive-2026.html" class="md-nav__link">
         
   
   
@@ -626,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/dummy-variables/" class="md-nav__link">
+      <a href="category-dummy-variables.html" class="md-nav__link">
         
   
   
@@ -656,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/heteroskedasticity/" class="md-nav__link">
+      <a href="category-heteroskedasticity.html" class="md-nav__link">
         
   
   
@@ -686,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/measurement-error/" class="md-nav__link">
+      <a href="category-measurement-error.html" class="md-nav__link">
         
   
   
@@ -716,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/model-selection/" class="md-nav__link">
+      <a href="category-model-selection.html" class="md-nav__link">
         
   
   
@@ -746,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/multicollinearity/" class="md-nav__link">
+      <a href="category-multicollinearity.html" class="md-nav__link">
         
   
   
@@ -776,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/omitted-variables/" class="md-nav__link">
+      <a href="category-omitted-variables.html" class="md-nav__link">
         
   
   
@@ -806,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/panel-data/" class="md-nav__link">
+      <a href="category-panel-data.html" class="md-nav__link">
         
   
   
@@ -836,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/structural-breaks/" class="md-nav__link">
+      <a href="category-structural-breaks.html" class="md-nav__link">
         
   
   
@@ -866,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/time-series/" class="md-nav__link">
+      <a href="category-time-series.html" class="md-nav__link">
         
   
   
@@ -896,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../category/unit-roots/" class="md-nav__link">
+      <a href="category-unit-roots.html" class="md-nav__link">
         
   
   
@@ -951,142 +911,455 @@
             
           
           
-            <div class="md-content" data-md-component="content">
-              
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-
-<h1 id="data-eviews">Data &amp; EViews</h1>
-<p>Every table on this blog can be reproduced in EViews.</p>
-<ol>
-<li>Download both files below and save them <strong>in the same folder</strong>.</li>
-<li>In EViews: <strong>File → Open → Program</strong>, choose <code>blog_posts.prg</code>, and click <strong>Run</strong>.</li>
-<li>A workfile called <strong>BLOG</strong> opens with one page per post (P1 to P8). Double-click any equation to see its output.</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>File</th>
-<th>What it contains</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../downloads/blog_datasets.xlsx"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm1.8 18H14l-2-3.4-2 3.4H8.2l2.9-4.5L8.2 11H10l2 3.4 2-3.4h1.8l-2.9 4.5zM13 9V3.5L18.5 9z"/></svg></span> blog_datasets.xlsx</a></td>
-<td>One sheet per post, plus a README sheet describing every variable</td>
-</tr>
-<tr>
-<td><a href="../downloads/blog_posts.prg"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2 2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3z"/></svg></span> blog_posts.prg</a></td>
-<td>EViews program that estimates every equation and test in the posts</td>
-</tr>
-</tbody>
-</table>
-<p>All data are simulated for teaching purposes. Feel free to use them in your own classes.</p>
-<table>
-<thead>
-<tr>
-<th>Sheet</th>
-<th>Post</th>
-<th>Sample</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>P1_icecream</td>
-<td><a href="../ice-cream/">Does Ice Cream Drown People?</a></td>
-<td>Monthly 2015M01–2024M12</td>
-</tr>
-<tr>
-<td>P2_spurious</td>
-<td><a href="../random-walks/">When Two Random Walks Fall in Love</a></td>
-<td>Undated, 200 obs</td>
-</tr>
-<tr>
-<td>P3_rsquared</td>
-<td><a href="../r-squared/">R-squared Is Not a Report Card</a></td>
-<td>Undated, 40 obs</td>
-</tr>
-<tr>
-<td>P4_measurement</td>
-<td><a href="../noisy-ruler/">The Noisy Ruler</a></td>
-<td>Undated, 150 obs</td>
-</tr>
-<tr>
-<td>P5_hetero</td>
-<td><a href="../errors-fan-out/">When the Errors Fan Out</a></td>
-<td>Undated, 200 obs</td>
-</tr>
-<tr>
-<td>P6_monsoon</td>
-<td><a href="../monsoon-dummy/">The Monsoon Dummy</a></td>
-<td>Monthly 2015M01–2024M12</td>
-</tr>
-<tr>
-<td>P7_break</td>
-<td><a href="../rules-changed/">The Day the Rules Changed</a></td>
-<td>Monthly 2012M01–2021M12</td>
-</tr>
-<tr>
-<td>P8_multicol</td>
-<td><a href="../two-friends/">Two Friends Who Always Arrive Together</a></td>
-<td>Undated, 60 obs</td>
-</tr>
-<tr>
-<td>P9_kite_balloon</td>
-<td><a href="../kite-and-balloon/">The Kite and the Balloon</a></td>
-<td>Undated, 200 obs</td>
-</tr>
-<tr>
-<td>P10_dickey_fuller</td>
-<td><a href="../dickey-fuller/">The Test That Needed Its Own Table</a></td>
-<td>Monthly 2005M01–2024M12</td>
-</tr>
-<tr>
-<td>P11_adf</td>
-<td><a href="../augmented-dickey-fuller/">Giving the Test a Memory</a></td>
-<td>Quarterly 1995Q1–2024Q4</td>
-</tr>
-<tr>
-<td>P12_phillips_perron</td>
-<td><a href="../phillips-perron/">The Two Phillipses</a></td>
-<td>Monthly 2005M01–2024M12</td>
-</tr>
-<tr>
-<td>P14_mystery</td>
-<td><a href="../dfgls-ng-perron/">The Short-Sighted Umpire</a></td>
-<td>Undated, 100 obs</td>
-</tr>
-<tr>
-<td>P15_break</td>
-<td><a href="../structural-breaks-unit-roots/">The Road with a Step</a></td>
-<td>Annual 1960–2023</td>
-</tr>
-<tr>
-<td>P16_panel</td>
-<td><a href="../panel-unit-roots/">Twenty States, One Question</a></td>
-<td>Annual panel, 20 states × 1994–2023</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
-            </div>
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="blog">Blog</h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-28 00:00:00+00:00">October 28, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-panel-data.html" class="md-meta__link">Panel data</a></li>
+        
+        
           
+          <li class="md-meta__item">
+            
+              9 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="twenty-states-one-question-panel-unit-root-tests-and-a-field-guide-to-all-of-them"><a class="toclink" href="panel-unit-roots.html">Twenty States, One Question: Panel Unit Root Tests (and a Field Guide to All of Them)</a></h2>
+<p>Chapter 6 ended with a sad fact: with 30 years of annual data, even a good unit root test is half blind. You can't make history longer. But you can look at more places. If you have 30 years of data for 20 states, you have 600 observations of the same economic process playing out in 20 slightly different settings. Can we pool them to see better?</p>
+<p>Yes, with care. This final chapter is about panel unit root tests, the tricky questions they answer, and a field guide to every test in this series.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="panel-unit-roots.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-27 00:00:00+00:00">October 27, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-structural-breaks.html" class="md-meta__link">Structural breaks</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="the-road-with-a-step-how-the-great-crash-rescued-the-trend"><a class="toclink" href="structural-breaks-unit-roots.html">The Road with a Step: How the Great Crash Rescued the Trend</a></h2>
+<p>In 1982 two economists published a paper that shook macroeconomics. Charles Nelson and Charles Plosser took 14 long annual US series, including GNP, industrial production, employment, prices, wages and interest rates, and ran Dickey-Fuller tests on all of them. For all but one, the unemployment rate, they could not reject a unit root.</p>
+<p>The conclusion seemed to follow: recessions are not temporary dips below a trend. They are permanent. The economy is a balloon, not a kite. Seven years later, a young Canadian econometrician named Pierre Perron pointed at two dates in history and said: not so fast.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="structural-breaks-unit-roots.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-26 00:00:00+00:00">October 26, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-time-series.html" class="md-meta__link">Time series</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              8 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="the-short-sighted-umpire-power-df-gls-and-the-ng-perron-tests"><a class="toclink" href="dfgls-ng-perron.html">The Short-Sighted Umpire: Power, DF-GLS and the Ng-Perron Tests</a></h2>
+<p>Imagine a cricket umpire who is very careful never to give a batsman out wrongly. A noble goal. Unfortunately he achieves it by almost never raising his finger at all. Plumb LBW? "Not out." Edge to the keeper? "Not out, there may have been doubt." He never makes the first kind of mistake. He makes the second kind all day long.</p>
+<p>The Dickey-Fuller family of tests is that umpire. In this chapter we measure how short-sighted it is, and meet the tests built to give it glasses.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="dfgls-ng-perron.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-26 00:00:00+00:00">October 26, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-multicollinearity.html" class="md-meta__link">Multicollinearity</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="two-friends-who-always-arrive-together-multicollinearity-and-the-goldsmith-who-invented-econometrics"><a class="toclink" href="two-friends.html">Two Friends Who Always Arrive Together: Multicollinearity, and the Goldsmith Who Invented Econometrics</a></h2>
+<p>Anyone who has hunted for a flat in an Indian city knows the two numbers on every listing: <strong>built-up area</strong> and <strong>carpet area</strong>. Built-up area includes the walls and balcony; carpet area is the floor you can actually lay a carpet on. Carpet area is usually around three-quarters to four-fifths of built-up area.</p>
+<p>Both surely matter for the rent. So let's put both in a regression and see which one matters more. The answer, it turns out, is "neither", and "both", at the same time.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="two-friends.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-25 00:00:00+00:00">October 25, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-time-series.html" class="md-meta__link">Time series</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="two-courts-opposite-verdicts-the-kpss-test"><a class="toclink" href="kpss.html">Two Courts, Opposite Verdicts: The KPSS Test</a></h2>
+<p>Every test we have met so far works like a strict court: the series is presumed to be a random walk, and it is up to the data to prove stationarity beyond reasonable doubt. When the evidence is thin, which it often is, the verdict is "not proven", and lazy researchers write "the series has a unit root".</p>
+<p>In 1992 four econometricians asked a cheeky question. What if we built a court with the <em>opposite</em> presumption? Their paper's subtitle says it all: "How sure are we that economic time series have a unit root?"</p>
+
+    
+      <nav class="md-post__action">
+        <a href="kpss.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-24 00:00:00+00:00">October 24, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-time-series.html" class="md-meta__link">Time series</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="the-two-phillipses-a-crocodile-hunter-a-water-computer-and-the-phillips-perron-test"><a class="toclink" href="phillips-perron.html">The Two Phillipses: A Crocodile Hunter, a Water Computer, and the Phillips-Perron Test</a></h2>
+<p>New Zealand is a small country with a population of around five million. It has produced two of the most famous econometricians in history, and both of them are called Phillips. Neither is related to the other. One built a working model of the British economy out of water tanks and pipes. The other gave us the mathematics of wandering time series, including the unit root test in this chapter.</p>
+<p>Let me introduce them, and then show you what the Phillips-Perron test does differently from the ADF.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="phillips-perron.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-23 00:00:00+00:00">October 23, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-time-series.html" class="md-meta__link">Time series</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="giving-the-test-a-memory-the-augmented-dickey-fuller-test"><a class="toclink" href="augmented-dickey-fuller.html">Giving the Test a Memory: The Augmented Dickey-Fuller Test</a></h2>
+<p>The plain Dickey-Fuller test makes one heroic assumption: the shocks that push the series around are completely unpredictable, like coin tosses. Real economies are not like that. A good quarter for business tends to be followed by another good quarter. Monsoon effects spill over several months. If yesterday's shock tells you something about today's, the Dickey-Fuller test is reading the wrong table again.</p>
+<p>The cure, invented by Said E. Said and David Dickey, is almost embarrassingly simple: give the regression a memory.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="augmented-dickey-fuller.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-22 00:00:00+00:00">October 22, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-time-series.html" class="md-meta__link">Time series</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              9 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="the-test-that-needed-its-own-table-dickey-and-fuller"><a class="toclink" href="dickey-fuller.html">The Test That Needed Its Own Table: Dickey and Fuller</a></h2>
+<p>You want to know whether <span class="arithmatex">\(\rho = 1\)</span>. You know how to test whether a coefficient equals some number: run the regression, compute a t-statistic, look it up in the t-table at the back of the textbook. Simple.</p>
+<p>Except that here, the t-table at the back of the textbook is wrong. Not slightly wrong. Wrong enough that if you trust it, you will "discover" stationarity in almost half of all random walks. This chapter is about the two statisticians from Iowa who worked out what the right table looks like.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="dickey-fuller.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-21 00:00:00+00:00">October 21, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-unit-roots.html" class="md-meta__link">Unit roots</a>, 
+              <a href="category-time-series.html" class="md-meta__link">Time series</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              9 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="the-kite-and-the-balloon-what-on-earth-is-a-unit-root"><a class="toclink" href="kite-and-balloon.html">The Kite and the Balloon: What on Earth Is a Unit Root?</a></h2>
+<p>Two children are standing in a field on a windy afternoon. One is flying a kite. The other is holding a balloon. A gust of wind arrives and pushes both of them sideways. A minute later the kite is back roughly where it was, bobbing about at the end of its string. The balloon slipped out of a small hand and is now drifting towards the next village. Nobody is going to see it again.</p>
+<p>That, in one picture, is the difference between a <strong>stationary</strong> time series and one with a <strong>unit root</strong>. This post starts a new series on this blog: eight chapters on how econometricians tell the kite from the balloon.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="kite-and-balloon.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-10-19 00:00:00+00:00">October 19, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category-time-series.html" class="md-meta__link">Time series</a>, 
+              <a href="category-structural-breaks.html" class="md-meta__link">Structural breaks</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="the-day-the-rules-changed-chow-quandt-cusum-and-the-search-for-breaks"><a class="toclink" href="rules-changed.html">The Day the Rules Changed: Chow, Quandt, CUSUM and the Search for Breaks</a></h2>
+<p>Some dates divide history into "before" and "after". For anyone in India, 8 November 2016 is one of them. Overnight, the old ₹500 and ₹1,000 notes stopped being legal tender, and millions of people who had never used a payments app suddenly had a reason to try one.</p>
+<p>This post is not about whether that policy was good or bad. It is about a quieter question every econometrician should ask: <strong>is the relationship I am estimating the same over the whole sample?</strong> We'll meet the economist from Guangzhou who gave us the classic test, and the tests that came after it.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="rules-changed.html">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page-2.html">2</a>
+</nav>
+        
+      
+    </div>
+  </div>
+
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -1130,14 +1403,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="bundle.d7400e89.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="mathjax.js"></script>
       
-        <script src="../javascripts/tex-mml-svg.js"></script>
+        <script src="tex-mml-svg.js"></script>
       
     
   </body>

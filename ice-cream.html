@@ -1,0 +1,1381 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Econometric ideas explained simply, with stories, data and EViews output">
+      
+      
+        <meta name="author" content="Prof.(Dr). Santhosh Kumar P K">
+      
+      
+        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/ice-cream.html">
+      
+      
+      
+        <link rel="next" href="random-walks.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Does Ice Cream Drown People? The Case of the Missing Variable - Econometrics Simplified</title>
+      
+    
+    
+      <link rel="stylesheet" href="main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+4:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Serif 4";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#does-ice-cream-drown-people-the-case-of-the-missing-variable" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Econometrics Simplified
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Does Ice Cream Drown People? The Case of the Missing Variable
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="unit-roots.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Unit Root Series
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="data.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Data & EViews
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="archive-2026.html" class="md-tabs__link">
+          
+  
+  
+  Archive
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="category-dummy-variables.html" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    Econometrics Simplified
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="unit-roots.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Root Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & EViews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="archive-2026.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-dummy-variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-heteroskedasticity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heteroskedasticity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-measurement-error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Measurement error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-model-selection.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-multicollinearity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multicollinearity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-omitted-variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omitted variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-panel-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panel data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-structural-breaks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structural breaks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-time-series.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-unit-roots.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit roots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#storks-babies-and-a-statistician-with-a-sense-of-humour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storks, babies and a statistician with a sense of humour
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-crime-scene-our-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The crime scene: our data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-detectives-first-question-what-else-moves-with-x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The detective's first question: what else moves with X?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-omitted-variable-bias-formula-with-a-short-derivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The omitted variable bias formula (with a short derivation)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bringing-the-suspect-in-for-questioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bringing the suspect in for questioning
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bringing the suspect in for questioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-the-omitted-variables-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1: the Omitted Variables test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-ramseys-reset-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2: Ramsey's RESET test
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#now-let-the-weather-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now let the weather in
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confession
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="index.html" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-09-07 00:00:00+00:00" class="md-ellipsis">September 7, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="category-omitted-variables.html">Omitted variables</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              7 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="does-ice-cream-drown-people-the-case-of-the-missing-variable">Does Ice Cream Drown People? The Case of the Missing Variable</h1>
+<p>Here is a headline I would love to see in a newspaper: <strong>"Ice cream linked to drownings: every extra thousand litres sold costs lives."</strong> It sounds absurd. Yet the regression behind it would look perfectly respectable, with a t-statistic of 20 and an R-squared that would make any student proud.</p>
+<p>This post is a detective story. There is a body, a suspect, and a culprit hiding in plain sight. By the end you will know the formula that every econometrician should carry in their pocket: the <strong>omitted variable bias</strong> formula.</p>
+<!-- more -->
+
+<div class="admonition abstract">
+<p class="admonition-title">Foundations · Post 1 of 8</p>
+<p><strong>1. Omitted variables</strong> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="monsoon-dummy.html">6. Dummy variables</a> · <a href="rules-changed.html">7. Structural breaks</a> · <a href="two-friends.html">8. Multicollinearity</a></p>
+<p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P1_icecream</strong> · Simulated monthly data, 2015M01–2024M12, 120 observations · <a href="blog_posts.prg">EViews program</a></p>
+</div>
+<p><img alt="Cartoon: the sun causes both ice cream sales and drownings" src="p1_cartoon_sun.png" /></p>
+<h2 id="storks-babies-and-a-statistician-with-a-sense-of-humour">Storks, babies and a statistician with a sense of humour</h2>
+<p>Before we look at ice cream, meet my favourite paper in the history of statistics. In 2000, the British science writer Robert Matthews published "Storks Deliver Babies (p = 0.008)" in the journal <em>Teaching Statistics</em>. He collected data on the number of breeding pairs of white storks and the number of human births in 17 European countries. The correlation was 0.62, with a p-value of 0.008. By the usual standards, the evidence that storks deliver babies is "highly significant".</p>
+<p>Matthews was, of course, joking with a straight face. He even pointed to the likely culprit: <strong>land area</strong>. Big countries have more room for storks <em>and</em> more people having babies. Leave land area out, and storks get the credit.</p>
+<p>A more serious version of the same trap made headlines in 1973. The University of California, Berkeley, appeared to admit men to graduate school at a noticeably higher rate than women. When Peter Bickel and his colleagues looked department by department (<em>Science</em>, 1975), the bias largely disappeared. Women had applied in larger numbers to the most competitive departments, which rejected most applicants of either sex. The missing variable was the department. Statisticians call this reversal <strong>Simpson's paradox</strong>, and it is the omitted variable problem in its most dramatic costume.</p>
+<h2 id="the-crime-scene-our-data">The crime scene: our data</h2>
+<p>Imagine a coastal district. Every month for ten years we record three things:</p>
+<ul>
+<li><strong>DROWN</strong>: the number of drowning incidents</li>
+<li><strong>ICECREAM</strong>: ice cream sales, in thousand litres</li>
+<li><strong>TEMP</strong>: the average maximum temperature, in °C</li>
+</ul>
+<p>A keen young analyst only has the first two series. She opens EViews and types <code>ls drown c icecream</code>.</p>
+<div class="highlight"><pre><span></span><code>Dependent Variable: DROWN
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample: 2015M01 2024M12
+Included observations: 120
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+C                        -1.241883      0.865828     -1.434329      0.1541
+ICECREAM                  0.140186      0.006832      20.51921      0.0000
+==============================================================================
+R-squared                 0.781091    Mean dependent var              15.96667
+Adjusted R-squared        0.779236    S.D. dependent var              5.017504
+S.E. of regression        2.357499    Akaike info criterion           4.569606
+Sum squared resid         655.8208    Schwarz criterion               4.616064
+Log likelihood           -272.1764    Hannan-Quinn criter.            4.588473
+F-statistic               421.0379    Durbin-Watson stat              1.833329
+Prob(F-statistic)         0.000000
+==============================================================================
+</code></pre></div>
+<p>A t-statistic of 20.5. A p-value that rounds to zero. An R-squared of 0.78. On paper, every extra thousand litres of ice cream comes with 0.14 more drownings a month. Should the district ban ice cream?</p>
+<h2 id="the-detectives-first-question-what-else-moves-with-x">The detective's first question: what else moves with X?</h2>
+<p>On hot days, people buy ice cream. On hot days, people also go swimming. Temperature drives <strong>both</strong> series. Ice cream is simply standing in for the weather, like an innocent bystander who happened to be at every crime scene.</p>
+<p>How closely do ice cream and temperature move together? Their correlation in our data is <strong>0.98</strong>. They are almost the same series.</p>
+<h2 id="the-omitted-variable-bias-formula-with-a-short-derivation">The omitted variable bias formula (with a short derivation)</h2>
+<p>Suppose the true model is</p>
+<div class="arithmatex">\[
+DROWN_i = \beta_0 + \beta_1\, ICECREAM_i + \beta_2\, TEMP_i + u_i
+\]</div>
+<p>but we estimate the "short" regression without TEMP:</p>
+<div class="arithmatex">\[
+DROWN_i = b_0 + b_1\, ICECREAM_i + e_i
+\]</div>
+<details class="note">
+<summary>Derivation: what does <span class="arithmatex">\(b_1\)</span> actually estimate? (click to open)</summary>
+<p>Write the "auxiliary" regression of the omitted variable on the included one:</p>
+<div class="arithmatex">\[
+TEMP_i = \delta_0 + \delta_1\, ICECREAM_i + v_i
+\]</div>
+<p>Substitute it into the true model:</p>
+<div class="arithmatex">\[
+DROWN_i = \beta_0 + \beta_1 ICECREAM_i + \beta_2(\delta_0 + \delta_1 ICECREAM_i + v_i) + u_i
+\]</div>
+<div class="arithmatex">\[
+= (\beta_0 + \beta_2\delta_0) + (\beta_1 + \beta_2\delta_1)\, ICECREAM_i + (\beta_2 v_i + u_i)
+\]</div>
+<p>The coefficient on ICECREAM in this rearranged equation is <span class="arithmatex">\(\beta_1 + \beta_2\delta_1\)</span>. The new error <span class="arithmatex">\(\beta_2 v_i + u_i\)</span> is uncorrelated with ICECREAM (because <span class="arithmatex">\(v_i\)</span> is a regression residual), so OLS on the short regression estimates exactly this.</p>
+</details>
+<p>The result is the formula every econometrician should know by heart:</p>
+<div class="arithmatex">\[
+\underbrace{b_1}_{\text{short}} \;=\; \underbrace{\beta_1}_{\text{true effect}} \;+\; \underbrace{\beta_2}_{\text{effect of the omitted variable}} \times \underbrace{\delta_1}_{\text{how it moves with X}}
+\]</div>
+<p>Two things must <strong>both</strong> be true for bias to appear:</p>
+<ol>
+<li>The omitted variable affects the outcome (<span class="arithmatex">\(\beta_2 \neq 0\)</span>), <strong>and</strong></li>
+<li>it is correlated with the included regressor (<span class="arithmatex">\(\delta_1 \neq 0\)</span>).</li>
+</ol>
+<p>And the formula even tells you the <strong>direction</strong> of the bias:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Omitted variable moves <em>with</em> X (<span class="arithmatex">\(\delta_1 &gt; 0\)</span>)</th>
+<th>Omitted variable moves <em>against</em> X (<span class="arithmatex">\(\delta_1 &lt; 0\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>It raises Y</strong> (<span class="arithmatex">\(\beta_2 &gt; 0\)</span>)</td>
+<td>Upward bias</td>
+<td>Downward bias</td>
+</tr>
+<tr>
+<td><strong>It lowers Y</strong> (<span class="arithmatex">\(\beta_2 &lt; 0\)</span>)</td>
+<td>Downward bias</td>
+<td>Upward bias</td>
+</tr>
+</tbody>
+</table>
+<p>Temperature raises drownings and moves with ice cream sales: top-left box, upward bias. Exactly what we saw.</p>
+<h2 id="bringing-the-suspect-in-for-questioning">Bringing the suspect in for questioning</h2>
+<p>Two diagnostic tests are worth knowing.</p>
+<h3 id="test-1-the-omitted-variables-test">Test 1: the Omitted Variables test</h3>
+<p>If you <em>have</em> a candidate variable, test it directly. In the equation window: <strong>View → Coefficient Diagnostics → Omitted Variables Test</strong>, and type TEMP (command: <code>eq1a.testadd temp</code>).</p>
+<div class="highlight"><pre><span></span><code>Omitted Variables Test
+Equation: EQ1A
+Omitted Variables: TEMP
+Specification: DROWN C ICECREAM TEMP
+Null hypothesis: TEMP is not significant
+
+==============================================================================
+                                   Value              df     Probability
+==============================================================================
+t-statistic                     5.066571             117          0.0000
+F-statistic                     25.67014        (1, 117)          0.0000
+Likelihood ratio                23.80336               1          0.0000
+==============================================================================
+</code></pre></div>
+<p>F = 25.7, p &lt; 0.0001. Temperature belongs in the model.</p>
+<h3 id="test-2-ramseys-reset-test">Test 2: Ramsey's RESET test</h3>
+<p>What if you don't know what is missing? In 1969, James Ramsey proposed the <strong>Regression Equation Specification Error Test</strong>, RESET. The idea is cheeky: add powers of the <em>fitted values</em> to the regression. If the model is correctly specified, they should add nothing. If they help, something is wrong with the functional form or something is missing. (<strong>View → Stability Diagnostics → Ramsey RESET Test</strong>, command <code>eq1a.reset(1)</code>.)</p>
+<div class="highlight"><pre><span></span><code>Ramsey RESET Test
+Equation: EQ1A
+Specification: DROWN C ICECREAM
+Omitted Variables: Squares of fitted values
+
+==============================================================================
+                                   Value              df     Probability
+==============================================================================
+t-statistic                     0.404175             117          0.6868
+F-statistic                     0.163357        (1, 117)          0.6868
+Likelihood ratio                0.167429               1          0.6824
+==============================================================================
+</code></pre></div>
+<p>p = 0.69. RESET finds nothing wrong! Here is an important lesson: RESET mainly detects <strong>wrong functional form</strong> (a straight line where there should be a curve). Our missing variable, temperature, is a straight-line cousin of ice cream, so the squared fitted values carry no extra information. <strong>No test can find a variable it has never heard of.</strong> Economic thinking must come first.</p>
+<h2 id="now-let-the-weather-in">Now let the weather in</h2>
+<p><code>ls drown c icecream temp</code></p>
+<div class="highlight"><pre><span></span><code>Dependent Variable: DROWN
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample: 2015M01 2024M12
+Included observations: 120
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+C                        -58.18576      11.26668     -5.164408      0.0000
+ICECREAM                 -0.027916      0.033755     -0.827000      0.4099
+TEMP                      2.506193      0.494653      5.066571      0.0000
+==============================================================================
+R-squared                 0.820479    Mean dependent var              15.96667
+Adjusted R-squared        0.817410    S.D. dependent var              5.017504
+S.E. of regression        2.144006    Akaike info criterion           4.387912
+Sum squared resid         537.8212    Schwarz criterion               4.457599
+Log likelihood           -260.2747    Hannan-Quinn criter.            4.416212
+F-statistic               267.3670    Durbin-Watson stat              1.936825
+Prob(F-statistic)         0.000000
+==============================================================================
+</code></pre></div>
+<p>The "ice cream effect" collapses. Its coefficient is now slightly negative, with a p-value of 0.41. Temperature carries the load: each extra degree adds about 2.5 drownings a month.</p>
+<p>Let's check the bias formula with real numbers. Regress the omitted variable on the included one (<code>ls temp c icecream</code>):</p>
+<div class="highlight"><pre><span></span><code>Dependent Variable: TEMP
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample: 2015M01 2024M12
+Included observations: 120
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+C                         22.72126      0.146543      155.0486      0.0000
+ICECREAM                  0.067075      0.001156      58.00700      0.0000
+==============================================================================
+R-squared                 0.966119    Mean dependent var              30.95500
+Adjusted R-squared        0.965832    S.D. dependent var              2.158620
+S.E. of regression        0.399011    Akaike info criterion           1.016869
+Sum squared resid         18.78673    Schwarz criterion               1.063328
+Log likelihood           -59.01217    Hannan-Quinn criter.            1.035736
+F-statistic               3364.812    Durbin-Watson stat              2.174390
+Prob(F-statistic)         0.000000
+==============================================================================
+</code></pre></div>
+<p>So <span class="arithmatex">\(\hat\delta_1 = 0.0671\)</span>: each extra thousand litres of ice cream comes with 0.067°C more temperature. Plug everything into the formula:</p>
+<div class="arithmatex">\[
+b_1 = \hat\beta_1 + \hat\beta_2 \hat\delta_1 = -0.0279 + 2.5062 \times 0.0671 = 0.1402
+\]</div>
+<p>That is <strong>exactly</strong> the coefficient of the short regression, 0.140186. The formula is not an approximation in a sample: it holds to the last decimal place.</p>
+<p>Notice too that the standard error on ICECREAM jumped from 0.007 to 0.034 when TEMP came in. That is because ice cream and temperature are almost the same series. Hold that thought; it is the subject of <a href="two-friends.html">Post 8</a>.</p>
+<h2 id="confession">Confession</h2>
+<p>I generated these data. In the true model, ice cream has <strong>zero</strong> effect on drownings. Temperature alone does the work. That is the beauty of simulation: we know the truth, so we can catch the regression lying.</p>
+<h2 id="the-lesson">The lesson</h2>
+<p>A significant t-statistic tells you that a coefficient is precisely estimated. It does not tell you that the coefficient means what you want it to mean. Before trusting any slope, play detective: <em>what else moves with my X, and also moves my Y?</em></p>
+<div class="admonition question">
+<p class="admonition-title">Something to think about</p>
+<p>Studies often find that people who drink a little coffee live longer than people who drink none. Name three omitted variables that could create this pattern. For each one, use the table above to say which way it would bias the coffee coefficient. Leave your answers in the comments.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All data on this blog are simulated for teaching purposes.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="bundle.d7400e89.min.js"></script>
+      
+        <script src="mathjax.js"></script>
+      
+        <script src="tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>

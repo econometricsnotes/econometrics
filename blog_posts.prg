@@ -72,6 +72,49 @@ freeze(wald8) eq8a.wald c(2)=0, c(3)=0
 equation eq8b.ls rent c builtup
 scalar corr_area = @cor(builtup, carpet)
 
+' ================= Extra tests for Posts 1-8 =================
+' Each block returns to the page of its post.
+
+pageselect p1
+freeze(reset1) eq1a.reset(1)
+freeze(omit1) eq1a.testadd temp
+equation eq1d.ls temp c icecream
+
+pageselect p2
+freeze(adf_popcorn) popcorn.uroot(adf, const)
+freeze(adf_goldfish) goldfish.uroot(adf, const)
+group g2 popcorn goldfish
+freeze(eg2) g2.coint(method=eg)
+
+pageselect p4
+equation eq4f.ls sleep_self c sleep_roommate
+eq4f.makeresids resid_fs
+equation eq4iv.tsls marks c sleep_self @ sleep_roommate
+equation eq4h.ls marks c sleep_self resid_fs
+equation eq4rev.ls sleep_self c marks
+
+pageselect p5
+freeze(bpg5) eq5a.hettest(type=bpg)
+freeze(glejser5) eq5a.hettest(type=glejser)
+equation eq5w.ls food/income c 1/income
+freeze(white5w) eq5w.hettest(type=white)
+' Goldfeld-Quandt: sort by income, then compare the 80 poorest and 80 richest
+' (see the post for the steps)
+
+pageselect p6
+freeze(wald6) eq6b.wald c(3)=0, c(4)=0
+equation eq6s.ls umbrella c trend monsoon may monsoon*trend
+equation eq6l.ls log(umbrella) c trend monsoon may
+
+pageselect p7
+freeze(qa7) eq7a.ubreak
+freeze(cusum7) eq7a.rls(q)
+
+pageselect p8
+equation eq8c.ls rent c builtup+carpet
+' Condition indices: open EQ8A, View -> Coefficient Diagnostics ->
+' Coefficient Variance Decomposition
+
 ' ================= Unit Root Series =================
 ' Chapters 1-8 of the Unit Root Series (blog posts 9-16)
 

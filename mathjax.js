@@ -4,7 +4,10 @@ window.MathJax = {
   options: { ignoreHtmlClass: ".*|", processHtmlClass: "arithmatex" }
 };
 document$.subscribe(() => {
-  MathJax.startup.output.clearCache();
+  if (!window.MathJax || !MathJax.typesetPromise) return;
+  if (MathJax.startup && MathJax.startup.output && MathJax.startup.output.clearCache) {
+    MathJax.startup.output.clearCache();
+  }
   MathJax.typesetClear();
   MathJax.texReset();
   MathJax.typesetPromise();
