@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="category-dummy-variables.html" class="md-tabs__link">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
           
   
   
@@ -580,6 +580,36 @@
   
   
     <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category-dummy-variables.html" class="md-nav__link">
         
   
@@ -588,6 +618,36 @@
     
   
     Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
   
 
     
@@ -1111,8 +1171,8 @@
 <!-- more -->
 
 <div class="admonition abstract">
-<p class="admonition-title">Foundations · Post 4 of 8</p>
-<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <strong>4. Measurement error</strong> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="monsoon-dummy.html">6. Dummy variables</a> · <a href="rules-changed.html">7. Structural breaks</a> · <a href="two-friends.html">8. Multicollinearity</a></p>
+<p class="admonition-title">Part II · Foundations · Chapter 4 of 9</p>
+<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <strong>4. Measurement error</strong> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="autocorrelation.html">6. Autocorrelation</a> · <a href="monsoon-dummy.html">7. Dummy variables</a> · <a href="rules-changed.html">8. Structural breaks</a> · <a href="two-friends.html">9. Multicollinearity</a></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P4_measurement</strong> · Simulated cross-section, 150 students · <a href="blog_posts.prg">EViews program</a></p>
 </div>
 <p><img alt="Cartoon: a student measuring sleep with a rubber ruler" src="p4_cartoon_ruler.png" /></p>
@@ -1153,7 +1213,7 @@ F-statistic               90.70983    Durbin-Watson stat              2.008383
 Prob(F-statistic)         0.000000
 ==============================================================================
 </code></pre></div>
-<p>An estimate of 3.86, close to the true 4. Notice the R-squared of only 0.38, even though this is the correct model (<a href="r-squared.html">Post 3</a> said this would happen).</p>
+<p>An estimate of 3.86, close to the true 4. Notice the R-squared of only 0.38, even though this is the correct model (<a href="r-squared.html">R-squared Is Not a Report Card</a> said this would happen).</p>
 <p>Now the noisy ruler. <code>ls marks c sleep_self</code></p>
 <div class="highlight"><pre><span></span><code>Dependent Variable: MARKS
 Method: Least Squares
@@ -1200,7 +1260,7 @@ Prob(F-statistic)         0.000000
 <p>If the <em>marks</em> had been recorded with random errors instead, the slope would still be unbiased. The extra noise would just join the error term <span class="arithmatex">\(u\)</span>, making standard errors bigger and R-squared smaller. <strong>Noise in Y costs you precision. Noise in X costs you the right answer.</strong></p>
 </details>
 <h2 id="fix-1-put-bounds-on-the-truth-frischs-trick">Fix 1: put bounds on the truth (Frisch's trick)</h2>
-<p>An old idea, which goes back to the work of Ragnar Frisch in the 1930s (we will meet him properly in <a href="two-friends.html">Post 8</a>), lets you put bounds on the true slope. Regress Y on X and you get a slope that is too small. Regress <strong>X on Y</strong> and take the reciprocal, and you get one that is too large (if Y is measured precisely enough). Here, regressing SLEEP_SELF on MARKS gives 0.0937, whose reciprocal is 10.7. So the truth lies somewhere between <strong>2.29 and 10.7</strong>. True, but a wide range. The true value, 4, is inside.</p>
+<p>An old idea, which goes back to the work of Ragnar Frisch in the 1930s (we will meet him properly in <a href="two-friends.html">Two Friends Who Always Arrive Together</a>), lets you put bounds on the true slope. Regress Y on X and you get a slope that is too small. Regress <strong>X on Y</strong> and take the reciprocal, and you get one that is too large (if Y is measured precisely enough). Here, regressing SLEEP_SELF on MARKS gives 0.0937, whose reciprocal is 10.7. So the truth lies somewhere between <strong>2.29 and 10.7</strong>. True, but a wide range. The true value, 4, is inside.</p>
 <h2 id="fix-2-instrumental-variables-with-a-little-help-from-the-roommate">Fix 2: instrumental variables, with a little help from the roommate</h2>
 <p>The cleverest fix needs a second, <strong>independent</strong> measurement of the same thing. The roommate's estimate is noisy too, but the roommate's mistakes have nothing to do with the student's own mistakes. That is exactly what an <strong>instrumental variable</strong> needs:</p>
 <ol>
@@ -1323,7 +1383,7 @@ Prob(F-statistic)         0.000000
 <p>A small, significant coefficient does not prove the effect is small. It may be a big effect seen through a foggy window. When your X is a survey answer, a proxy or a rough estimate, expect attenuation, and look for a second independent measurement to use as an instrument.</p>
 <div class="admonition question">
 <p class="admonition-title">Something to think about</p>
-<p>Studies often find that the measured return to an extra year of schooling is modest. Years of schooling are usually self-reported. Which way would that bias the estimate? Now think of a reason why the bias could go the <strong>other</strong> way (hint: <a href="ice-cream.html">Post 1</a>). Some famous studies used twins as "instruments". Why might twins help? Answer in the comments.</p>
+<p>Studies often find that the measured return to an extra year of schooling is modest. Years of schooling are usually self-reported. Which way would that bias the estimate? Now think of a reason why the bias could go the <strong>other</strong> way (hint: <a href="ice-cream.html">Does Ice Cream Drown People?</a>). Some famous studies used twins as "instruments". Why might twins help? Answer in the comments.</p>
 </div>
 
 

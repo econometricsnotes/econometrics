@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="category-dummy-variables.html" class="md-tabs__link">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
           
   
   
@@ -580,6 +580,36 @@
   
   
     <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category-dummy-variables.html" class="md-nav__link">
         
   
@@ -588,6 +618,36 @@
     
   
     Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
   
 
     
@@ -1112,8 +1172,8 @@
 <!-- more -->
 
 <div class="admonition abstract">
-<p class="admonition-title">Foundations · Post 7 of 8</p>
-<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="monsoon-dummy.html">6. Dummy variables</a> · <strong>7. Structural breaks</strong> · <a href="two-friends.html">8. Multicollinearity</a></p>
+<p class="admonition-title">Part II · Foundations · Chapter 8 of 9</p>
+<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="autocorrelation.html">6. Autocorrelation</a> · <a href="monsoon-dummy.html">7. Dummy variables</a> · <strong>8. Structural breaks</strong> · <a href="two-friends.html">9. Multicollinearity</a></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P7_break</strong> · Simulated monthly data, 2012M01–2021M12, 120 observations · <a href="blog_posts.prg">EViews program</a></p>
 </div>
 <h2 id="gregory-chow-from-guangzhou-to-princeton-to-beijing">Gregory Chow: from Guangzhou to Princeton to Beijing</h2>
@@ -1158,7 +1218,7 @@ F = \frac{\left(SSR_{\text{pooled}} - SSR_1 - SSR_2\right)/k}{\left(SSR_1 + SSR_
 <div class="arithmatex">\[
 y_t = \alpha + \beta\, t + \gamma\, D_t + \theta\, (D_t \times t) + u_t
 \]</div>
-<p>The Chow test is exactly the F-test of <span class="arithmatex">\(\gamma = \theta = 0\)</span>. The intercept dummy (<a href="monsoon-dummy.html">Post 6</a>) captures a jump in level; the slope dummy captures a change in growth. Under the null both are zero and the model collapses to one line.</p>
+<p>The Chow test is exactly the F-test of <span class="arithmatex">\(\gamma = \theta = 0\)</span>. The intercept dummy (<a href="monsoon-dummy.html">The Monsoon Dummy</a>) captures a jump in level; the slope dummy captures a change in growth. Under the null both are zero and the model collapses to one line.</p>
 </details>
 <p><strong>View → Stability Diagnostics → Chow Breakpoint Test</strong>, enter <code>2016M11</code>:</p>
 <div class="highlight"><pre><span></span><code>Chow Breakpoint Test: 2016M11

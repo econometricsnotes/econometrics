@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="category-dummy-variables.html" class="md-tabs__link">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
           
   
   
@@ -580,6 +580,36 @@
   
   
     <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category-dummy-variables.html" class="md-nav__link">
         
   
@@ -588,6 +618,36 @@
     
   
     Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
   
 
     
@@ -1139,8 +1199,8 @@
 <!-- more -->
 
 <div class="admonition abstract">
-<p class="admonition-title">Foundations · Post 3 of 8</p>
-<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <strong>3. R-squared</strong> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="monsoon-dummy.html">6. Dummy variables</a> · <a href="rules-changed.html">7. Structural breaks</a> · <a href="two-friends.html">8. Multicollinearity</a></p>
+<p class="admonition-title">Part II · Foundations · Chapter 3 of 9</p>
+<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <strong>3. R-squared</strong> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="autocorrelation.html">6. Autocorrelation</a> · <a href="monsoon-dummy.html">7. Dummy variables</a> · <a href="rules-changed.html">8. Structural breaks</a> · <a href="two-friends.html">9. Multicollinearity</a></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P3_rsquared</strong> · Simulated cross-section, 40 students · <a href="blog_posts.prg">EViews program</a></p>
 </div>
 <h2 id="what-r-squared-actually-measures">What R-squared actually measures</h2>
@@ -1297,7 +1357,7 @@ Chi-square                  1.907137               4          0.7528
 <p>With no junk, the average R-squared is 0.63 and the forecast error on new students is about 9 marks. With 30 junk variables, the R-squared climbs to <strong>0.92</strong>, and the forecast error more than doubles to <strong>20.5 marks</strong>. Adjusted R-squared stays flat at about 0.61 throughout: it is honest about the junk, though not strict enough to throw it out on its own.</p>
 <p>This is <strong>overfitting</strong>: the model memorises the noise of this particular class instead of learning the rule. It is the most common sin in machine learning as well as in econometrics.</p>
 <h2 id="a-low-r-squared-can-be-perfectly-fine">A low R-squared can be perfectly fine</h2>
-<p>What if your R-squared is 0.15? Don't panic. Human behaviour is noisy. If you want to know <strong>how much</strong> an extra hour of study is worth, what matters is whether the slope is unbiased and precise. A model can capture a true, important effect and still leave most of the variation unexplained. In <a href="noisy-ruler.html">Post 4</a>, the correct model has an R-squared of only 0.38. In <a href="random-walks.html">Post 2</a>, a completely meaningless regression has 0.72.</p>
+<p>What if your R-squared is 0.15? Don't panic. Human behaviour is noisy. If you want to know <strong>how much</strong> an extra hour of study is worth, what matters is whether the slope is unbiased and precise. A model can capture a true, important effect and still leave most of the variation unexplained. In <a href="noisy-ruler.html">The Noisy Ruler</a>, the correct model has an R-squared of only 0.38. In <a href="random-walks.html">When Two Random Walks Fall in Love</a>, a completely meaningless regression has 0.72.</p>
 <h2 id="the-lesson">The lesson</h2>
 <p>R-squared answers one narrow question: how closely does the line hug the data <em>in this sample</em>? To choose between models, use adjusted R-squared, information criteria, F-tests and, best of all, out-of-sample prediction. And always, as Anscombe insisted, look at the picture.</p>
 <div class="admonition question">

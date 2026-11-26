@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/monsoon-dummy.html">
       
       
-        <link rel="prev" href="errors-fan-out.html">
+        <link rel="prev" href="autocorrelation.html">
       
       
         <link rel="next" href="rules-changed.html">
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="category-dummy-variables.html" class="md-tabs__link">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
           
   
   
@@ -580,6 +580,36 @@
   
   
     <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category-dummy-variables.html" class="md-nav__link">
         
   
@@ -588,6 +618,36 @@
     
   
     Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
   
 
     
@@ -1083,8 +1143,8 @@
 <!-- more -->
 
 <div class="admonition abstract">
-<p class="admonition-title">Foundations · Post 6 of 8</p>
-<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <strong>6. Dummy variables</strong> · <a href="rules-changed.html">7. Structural breaks</a> · <a href="two-friends.html">8. Multicollinearity</a></p>
+<p class="admonition-title">Part II · Foundations · Chapter 7 of 9</p>
+<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="autocorrelation.html">6. Autocorrelation</a> · <strong>7. Dummy variables</strong> · <a href="rules-changed.html">8. Structural breaks</a> · <a href="two-friends.html">9. Multicollinearity</a></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P6_monsoon</strong> · Simulated monthly data, 2015M01–2024M12, 120 observations · <a href="blog_posts.prg">EViews program</a></p>
 </div>
 <h2 id="why-dummy">Why "dummy"?</h2>
@@ -1121,7 +1181,7 @@ F-statistic               2.981444    Durbin-Watson stat              0.655093
 Prob(F-statistic)         0.086841
 ==============================================================================
 </code></pre></div>
-<p>A miserable model. R-squared 0.02, a trend that is not significant at 5%, and a Durbin-Watson of 0.66 shouting that the residuals have a pattern. Of course they do: every June to September they are large and positive, every other month negative. The season is hiding in the error term, an omitted variable (<a href="ice-cream.html">Post 1</a>) in seasonal costume.</p>
+<p>A miserable model. R-squared 0.02, a trend that is not significant at 5%, and a Durbin-Watson of 0.66 shouting that the residuals have a pattern. Of course they do: every June to September they are large and positive, every other month negative. The season is hiding in the error term, an omitted variable (<a href="ice-cream.html">Does Ice Cream Drown People?</a>) in seasonal costume.</p>
 <h2 id="model-2-flip-the-switches">Model 2: flip the switches</h2>
 <div class="arithmatex">\[
 UMBRELLA_t = \beta_0 + \beta_1\, TREND_t + \delta_1\, MONSOON_t + \delta_2\, MAY_t + u_t
@@ -1185,7 +1245,7 @@ Chi-square                  2803.109               2          0.0000
 <div class="highlight"><pre><span></span><code>Near singular matrix error. Regressors may be perfectly collinear.
 </code></pre></div>
 <p><img alt="Cartoon: three switches wired to one light bulb crash EViews" src="p6_cartoon_trap.png" /></p>
-<p>Here is why. For every month, MONSOON + DRY = 1. The constant C is also a column of 1s. So C is <em>exactly</em> MONSOON + DRY. OLS is asked to share out the same information three ways, and there is no unique answer. This is perfect multicollinearity (<a href="two-friends.html">Post 8</a> is about its milder cousin).</p>
+<p>Here is why. For every month, MONSOON + DRY = 1. The constant C is also a column of 1s. So C is <em>exactly</em> MONSOON + DRY. OLS is asked to share out the same information three ways, and there is no unique answer. This is perfect multicollinearity (<a href="two-friends.html">Two Friends Who Always Arrive Together</a> is about its milder cousin).</p>
 <details class="note">
 <summary>The algebra of the trap (click to open)</summary>
 <p>OLS needs to invert the matrix <span class="arithmatex">\(X'X\)</span>. If one column of <span class="arithmatex">\(X\)</span> is an exact combination of others, here <span class="arithmatex">\(C = MONSOON + DRY\)</span>, then <span class="arithmatex">\(X\)</span> does not have full column rank, <span class="arithmatex">\(X'X\)</span> is singular, and its inverse doesn't exist. Infinitely many coefficient vectors fit the data equally well: add any number <span class="arithmatex">\(a\)</span> to both dummy coefficients and subtract <span class="arithmatex">\(a\)</span> from the constant, and the fitted values don't change.</p>
@@ -1241,7 +1301,7 @@ F-statistic               715.6048    Durbin-Watson stat              2.319610
 Prob(F-statistic)         0.000000
 ==============================================================================
 </code></pre></div>
-<p>The interaction MONSOON×TREND is −0.014 with p = 0.53. No evidence that the monsoon effect changed over time, which is how I built the data. A slope dummy is also the engine behind the Chow test of <a href="rules-changed.html">Post 7</a>.</p>
+<p>The interaction MONSOON×TREND is −0.014 with p = 0.53. No evidence that the monsoon effect changed over time, which is how I built the data. A slope dummy is also the engine behind the Chow test of <a href="rules-changed.html">The Day the Rules Changed</a>.</p>
 <h2 id="a-trap-with-logs-when-104-means-183">A trap with logs: when 1.04 means 183%</h2>
 <p>Many models use log sales. Then a dummy coefficient is often read as "a percentage effect". <code>ls log(umbrella) c trend monsoon may</code></p>
 <div class="highlight"><pre><span></span><code>Dependent Variable: LOG(UMBRELLA)

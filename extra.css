@@ -249,11 +249,13 @@
   font-size: 0.8rem;
 }
 
+.chapter-grid.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.chapter-grid.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media screen and (max-width: 76.1875em) {
-  .chapter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chapter-grid, .chapter-grid.grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media screen and (max-width: 44.9375em) {
-  .chapter-grid { grid-template-columns: 1fr; }
+  .chapter-grid, .chapter-grid.grid-2, .chapter-grid.grid-3 { grid-template-columns: 1fr; }
   .hero { padding: 1.8rem 1.3rem 1.6rem; border-radius: 14px; }
   .hero::after { opacity: 0.18; width: 220px; height: 150px; right: 0.5rem; bottom: 0.5rem; }
   .md-typeset .hero-title { font-size: 2.15rem; }

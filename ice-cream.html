@@ -15,6 +15,8 @@
         <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/ice-cream.html">
       
       
+        <link rel="prev" href="idea-of-regression.html">
+      
       
         <link rel="next" href="random-walks.html">
       
@@ -273,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="category-dummy-variables.html" class="md-tabs__link">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
           
   
   
@@ -578,6 +580,36 @@
   
   
     <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category-dummy-variables.html" class="md-nav__link">
         
   
@@ -586,6 +618,36 @@
     
   
     Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
   
 
     
@@ -1109,8 +1171,8 @@
 <!-- more -->
 
 <div class="admonition abstract">
-<p class="admonition-title">Foundations · Post 1 of 8</p>
-<p><strong>1. Omitted variables</strong> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="monsoon-dummy.html">6. Dummy variables</a> · <a href="rules-changed.html">7. Structural breaks</a> · <a href="two-friends.html">8. Multicollinearity</a></p>
+<p class="admonition-title">Part II · Foundations · Chapter 1 of 9</p>
+<p><strong>1. Omitted variables</strong> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="autocorrelation.html">6. Autocorrelation</a> · <a href="monsoon-dummy.html">7. Dummy variables</a> · <a href="rules-changed.html">8. Structural breaks</a> · <a href="two-friends.html">9. Multicollinearity</a></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P1_icecream</strong> · Simulated monthly data, 2015M01–2024M12, 120 observations · <a href="blog_posts.prg">EViews program</a></p>
 </div>
 <p><img alt="Cartoon: the sun causes both ice cream sales and drownings" src="p1_cartoon_sun.png" /></p>
@@ -1294,7 +1356,7 @@ Prob(F-statistic)         0.000000
 b_1 = \hat\beta_1 + \hat\beta_2 \hat\delta_1 = -0.0279 + 2.5062 \times 0.0671 = 0.1402
 \]</div>
 <p>That is <strong>exactly</strong> the coefficient of the short regression, 0.140186. The formula is not an approximation in a sample: it holds to the last decimal place.</p>
-<p>Notice too that the standard error on ICECREAM jumped from 0.007 to 0.034 when TEMP came in. That is because ice cream and temperature are almost the same series. Hold that thought; it is the subject of <a href="two-friends.html">Post 8</a>.</p>
+<p>Notice too that the standard error on ICECREAM jumped from 0.007 to 0.034 when TEMP came in. That is because ice cream and temperature are almost the same series. Hold that thought; it is the subject of <a href="two-friends.html">Two Friends Who Always Arrive Together</a>.</p>
 <h2 id="confession">Confession</h2>
 <p>I generated these data. In the true model, ice cream has <strong>zero</strong> effect on drownings. Temperature alone does the work. That is the beauty of simulation: we know the truth, so we can catch the regression lying.</p>
 <h2 id="the-lesson">The lesson</h2>

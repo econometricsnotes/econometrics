@@ -176,3 +176,30 @@ import(type=excel) %xl range="P16_panel" @freq u 1
 pagestruct state @date(year)
 freeze(panel_summary) infl.uroot(sum, const)
 freeze(panel_hadri) infl.uroot(hadri, const)
+
+' ================= Getting started and autocorrelation =================
+' ---------------- Getting started 1: hypothesis testing ----------------
+pagecreate(page=p0a) u 1 40
+import(type=excel) %xl range="P0A_hypothesis" @freq u 1
+freeze(stats0a) weight.stats
+freeze(test0a) weight.teststat(mean=500)
+
+' ---------------- Getting started 2: the idea of regression ----------------
+pagecreate(page=p0b) u 1 200
+import(type=excel) %xl range="P0B_regression" @freq u 1
+equation eq0b.ls child c parent
+equation eq0brev.ls parent c child
+freeze(wald0b) eq0b.wald c(2)=1
+
+' ---------------- Foundations 6: autocorrelation ----------------
+pagecreate(page=p5b) m 2010m01 2024m12
+import(type=excel) %xl range="P5B_autocorr" @freq m 2010m01
+equation eq5ba.ls demand c temp
+freeze(bg5b) eq5ba.auto(2)
+eq5ba.makeresids res5b
+freeze(corr5b) res5b.correl(8)
+equation eq5bhac.ls(cov=hac) demand c temp
+equation eq5brho.ls res5b res5b(-1)
+scalar rho5b = eq5brho.@coefs(1)
+equation eq5bco.ls (demand-rho5b*demand(-1)) c (temp-rho5b*temp(-1))
+equation eq5bar.ls demand c temp ar(1)

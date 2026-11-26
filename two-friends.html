@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="category-dummy-variables.html" class="md-tabs__link">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
           
   
   
@@ -580,6 +580,36 @@
   
   
     <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category-dummy-variables.html" class="md-nav__link">
         
   
@@ -588,6 +618,36 @@
     
   
     Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
   
 
     
@@ -1161,8 +1221,8 @@
 <!-- more -->
 
 <div class="admonition abstract">
-<p class="admonition-title">Foundations · Post 8 of 8</p>
-<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="monsoon-dummy.html">6. Dummy variables</a> · <a href="rules-changed.html">7. Structural breaks</a> · <strong>8. Multicollinearity</strong></p>
+<p class="admonition-title">Part II · Foundations · Chapter 9 of 9</p>
+<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="autocorrelation.html">6. Autocorrelation</a> · <a href="monsoon-dummy.html">7. Dummy variables</a> · <a href="rules-changed.html">8. Structural breaks</a> · <strong>9. Multicollinearity</strong></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P8_multicol</strong> · Simulated cross-section, 60 flats · <a href="blog_posts.prg">EViews program</a></p>
 </div>
 <p><img alt="Cartoon: two friends arrive at a party carrying one cake" src="p8_cartoon_party.png" /></p>
@@ -1324,7 +1384,7 @@ Prob(F-statistic)         0.000000
 ==============================================================================
 </code></pre></div>
 <p>The standard error drops from 0.0164 to 0.0010, and the t-statistic leaps to 12.9. R-squared barely moves (0.741 to 0.741). An extra 100 sq ft of built-up area adds about ₹1,300 a month to the rent.</p>
-<p>But be honest about what this coefficient now means. It is the effect of built-up area <strong>together with the carpet area that comes with it</strong>. Dropping CARPET is fine for predicting rent; it would be wrong to claim we have isolated the value of walls. (Notice the link to <a href="ice-cream.html">Post 1</a>: dropping a correlated variable always shifts its effect onto the one you keep.)</p>
+<p>But be honest about what this coefficient now means. It is the effect of built-up area <strong>together with the carpet area that comes with it</strong>. Dropping CARPET is fine for predicting rent; it would be wrong to claim we have isolated the value of walls. (Notice the link to <a href="ice-cream.html">Does Ice Cream Drown People?</a>: dropping a correlated variable always shifts its effect onto the one you keep.)</p>
 <h3 id="remedy-2-combine-them">Remedy 2: combine them</h3>
 <p>If both measure "size", make a single size index. <code>ls rent c builtup+carpet</code></p>
 <div class="highlight"><pre><span></span><code>Dependent Variable: RENT

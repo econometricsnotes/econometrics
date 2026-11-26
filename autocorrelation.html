@@ -1,0 +1,1483 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Econometric ideas explained simply, with stories, data and EViews output">
+      
+      
+        <meta name="author" content="Prof.(Dr). Santhosh Kumar P K">
+      
+      
+        <link rel="canonical" href="https://econometricsnotes.github.io/econometrics/autocorrelation.html">
+      
+      
+        <link rel="prev" href="errors-fan-out.html">
+      
+      
+        <link rel="next" href="monsoon-dummy.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Residuals That Remember Yesterday: Autocorrelation - Econometrics Simplified</title>
+      
+    
+    
+      <link rel="stylesheet" href="main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+4:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Serif 4";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#residuals-that-remember-yesterday-autocorrelation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Econometrics Simplified" class="md-header__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Econometrics Simplified
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Residuals That Remember Yesterday: Autocorrelation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="unit-roots.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Unit Root Series
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="data.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Data & EViews
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="about.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="archive-2026.html" class="md-tabs__link">
+          
+  
+  
+  Archive
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
+          
+  
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Econometrics Simplified" class="md-nav__button md-logo" aria-label="Econometrics Simplified" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19v1h18v2H2V2h2v15c3 0 6-2 8.1-5.6 3-5 6.3-7.4 9.9-7.4v2c-2.8 0-5.5 2.1-8.1 6.5C11.3 16.6 7.7 19 4 19"/></svg>
+
+    </a>
+    Econometrics Simplified
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="unit-roots.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit Root Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & EViews
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="about.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="archive-2026.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-dummy-variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-heteroskedasticity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Heteroskedasticity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-measurement-error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Measurement error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-model-selection.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-multicollinearity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multicollinearity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-omitted-variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Omitted variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-panel-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panel data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-structural-breaks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structural breaks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-time-series.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-unit-roots.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unit roots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-number-every-eviews-user-has-seen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The number every EViews user has seen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-idea-and-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The idea, and the model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The idea, and the model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-does-it-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where does it come from?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-goes-wrong-and-what-doesnt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What goes wrong (and what doesn't)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-data-electricity-and-temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The data: electricity and temperature
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-1-the-durbin-watson-statistic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 1: the Durbin-Watson statistic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-2-the-residual-correlogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 2: the residual correlogram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-3-the-breusch-godfrey-lm-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test 3: the Breusch-Godfrey LM test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-1-newey-west-standard-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fix 1: Newey-West standard errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-2-cochrane-orcutt-or-transform-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fix 2: Cochrane-Orcutt, or transform the model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-3-model-the-dynamics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fix 3: model the dynamics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="index.html" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-10-08 00:00:00+00:00" class="md-ellipsis">October 8, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="category-autocorrelation.html">Autocorrelation</a>, 
+                              <a href="category-time-series.html">Time series</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              10 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="residuals-that-remember-yesterday-autocorrelation">Residuals That Remember Yesterday: Autocorrelation</h1>
+<p>If today is hotter than usual, tomorrow probably will be too. Heat waves last for days; cold spells too. Moods carry over from one morning to the next. Prices that rose last month often keep rising this month. Time has memory.</p>
+<p>When that memory sneaks into the <strong>errors</strong> of a regression, we have <strong>autocorrelation</strong>, also called serial correlation. It doesn't make the coefficients wrong, but it makes the regression far too confident about them. This chapter shows how to spot it, test it and fix it, with an electricity company that badly needs to know how much a hot month costs it.</p>
+<!-- more -->
+
+<div class="admonition abstract">
+<p class="admonition-title">Part II · Foundations · Chapter 6 of 9</p>
+<p><a href="ice-cream.html">1. Omitted variables</a> · <a href="random-walks.html">2. Spurious regression</a> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <strong>6. Autocorrelation</strong> · <a href="monsoon-dummy.html">7. Dummy variables</a> · <a href="rules-changed.html">8. Structural breaks</a> · <a href="two-friends.html">9. Multicollinearity</a></p>
+<p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P5B_autocorr</strong> · Simulated monthly data, 2010M01–2024M12, 180 observations · <a href="blog_posts.prg">EViews program</a></p>
+</div>
+<h2 id="the-number-every-eviews-user-has-seen">The number every EViews user has seen</h2>
+<p>Every EViews regression table prints a <strong>Durbin-Watson stat</strong> in its bottom right corner. Most students learn to glance at it, hope it is near 2, and move on. It was invented by two statisticians who worked together at Cambridge's Department of Applied Economics in the late 1940s: James Durbin, an Englishman who later spent most of his career at the London School of Economics, and Geoffrey Watson, an Australian who went on to Princeton. Their papers appeared in <em>Biometrika</em> in 1950 and 1951, and their statistic has been printed under countless regressions ever since.</p>
+<h2 id="the-idea-and-the-model">The idea, and the model</h2>
+<p>In a time-series regression</p>
+<div class="arithmatex">\[
+y_t = \beta_0 + \beta_1 x_t + u_t
+\]</div>
+<p>we normally assume the errors <span class="arithmatex">\(u_t\)</span> are unrelated to each other. Autocorrelation means they are not. The simplest version is <strong>first-order autocorrelation</strong>, AR(1):</p>
+<div class="arithmatex">\[
+u_t = \rho\, u_{t-1} + \varepsilon_t, \qquad -1 &lt; \rho &lt; 1
+\]</div>
+<p>where <span class="arithmatex">\(\varepsilon_t\)</span> is fresh, unpredictable noise. With <span class="arithmatex">\(\rho &gt; 0\)</span> (by far the most common case in economics), a positive error tends to be followed by another positive error. The residuals come in <strong>runs</strong>:</p>
+<p><img alt="Residuals in long runs of the same sign" src="a_cartoon_runs.png" /></p>
+<h3 id="where-does-it-come-from">Where does it come from?</h3>
+<ul>
+<li><strong>Inertia.</strong> Economies, weather, habits and prices move slowly. Anything left in the error inherits that slowness.</li>
+<li><strong>Omitted variables that move slowly</strong> (<a href="ice-cream.html">Does Ice Cream Drown People?</a>). If a missing variable trends or cycles, the errors trend and cycle with it.</li>
+<li><strong>Wrong functional form.</strong> Fitting a straight line to a curve leaves residuals that are positive at the ends and negative in the middle: one long run each.</li>
+<li><strong>Data smoothing.</strong> Quarterly averages of monthly data, or interpolated series, build autocorrelation in by construction.</li>
+</ul>
+<p>The second and third causes matter: <strong>autocorrelated residuals are often the model telling you something is missing.</strong> Always ask that question first.</p>
+<h2 id="what-goes-wrong-and-what-doesnt">What goes wrong (and what doesn't)</h2>
+<p>The coefficients are still <strong>unbiased</strong>: on average, OLS gets the slope right. But the usual <strong>standard errors are wrong</strong>. When both the errors and the regressor are positively autocorrelated, as they usually are, the standard errors are too small, so t-statistics are too big and you find "significant" effects that aren't there.</p>
+<details class="note">
+<summary>Why the standard errors are too small (click to open)</summary>
+<p>With one regressor (in deviations from its mean), <span class="arithmatex">\(\hat\beta_1 - \beta_1 = \sum x_t u_t / \sum x_t^2\)</span>. Its variance is</p>
+<div class="arithmatex">\[
+\operatorname{Var}(\hat\beta_1) = \frac{1}{\left(\sum x_t^2\right)^2}\left[\sum_t x_t^2\, \sigma_u^2 + 2\sum_{t&lt;s} x_t x_s\, \operatorname{Cov}(u_t, u_s)\right]
+\]</div>
+<p>The usual OLS formula keeps only the first term, <span class="arithmatex">\(\sigma_u^2/\sum x_t^2\)</span>, and throws away all the covariance terms. If <span class="arithmatex">\(x\)</span> is itself AR(1) with coefficient <span class="arithmatex">\(\phi\)</span>, a classic approximation gives</p>
+<div class="arithmatex">\[
+\frac{\text{true variance}}{\text{OLS formula}} \approx \frac{1 + \rho\phi}{1 - \rho\phi}
+\]</div>
+<p>With <span class="arithmatex">\(\rho = 0.8\)</span> and <span class="arithmatex">\(\phi = 0.8\)</span>, that ratio is <span class="arithmatex">\(1.64/0.36 \approx 4.6\)</span>. The OLS standard error is too small by a factor of about <span class="arithmatex">\(\sqrt{4.6} \approx 2.1\)</span>.</p>
+</details>
+<p>I tested this by simulation. The true slope is zero; the regressor has autocorrelation 0.8; I varied the autocorrelation of the errors:</p>
+<p><img alt="False rejection rates rise with rho for OLS standard errors" src="a_mc.png" /></p>
+<p>With independent errors, the usual t-test wrongly finds a "significant" slope 5% of the time, as it should. With <span class="arithmatex">\(\rho = 0.8\)</span>, it does so <strong>34%</strong> of the time; with <span class="arithmatex">\(\rho = 0.9\)</span>, <strong>40%</strong>. One test in three is a false discovery.</p>
+<h2 id="the-data-electricity-and-temperature">The data: electricity and temperature</h2>
+<p>An electricity distribution company wants to know how much extra power each degree of temperature costs it, to plan for summer peaks. The sheet <strong>P5B_autocorr</strong> has 15 years of monthly data:</p>
+<ul>
+<li><strong>DEMAND</strong>: electricity demand (GWh)</li>
+<li><strong>TEMP</strong>: average maximum temperature (°C)</li>
+</ul>
+<p>I built the data with a true effect of <strong>3.0 GWh per °C</strong>, and errors with <span class="arithmatex">\(\rho = 0.75\)</span>: a hot, humid spell or a run of festivals pushes demand above normal for several months.</p>
+<p><code>ls demand c temp</code></p>
+<div class="highlight"><pre><span></span><code>Dependent Variable: DEMAND
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample: 2010M01 2024M12
+Included observations: 180
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+C                         37.22683      3.436270      10.83350      0.0000
+TEMP                      3.115478      0.121924      25.55268      0.0000
+==============================================================================
+R-squared                 0.785785    Mean dependent var              124.5294
+Adjusted R-squared        0.784581    S.D. dependent var              10.61980
+S.E. of regression        4.928994    Akaike info criterion           6.039196
+Sum squared resid         4324.507    Schwarz criterion               6.074673
+Log likelihood           -541.5276    Hannan-Quinn criter.            6.053580
+F-statistic               652.9393    Durbin-Watson stat              0.436875
+Prob(F-statistic)         0.000000
+==============================================================================
+</code></pre></div>
+<p>Each extra degree adds about 3.1 GWh, with a t-statistic of 25.6. Impressive. But look at the corner: <strong>Durbin-Watson = 0.44</strong>.</p>
+<h2 id="test-1-the-durbin-watson-statistic">Test 1: the Durbin-Watson statistic</h2>
+<div class="arithmatex">\[
+DW = \frac{\sum_{t=2}^{T} (\hat u_t - \hat u_{t-1})^2}{\sum_{t=1}^{T} \hat u_t^2}
+\]</div>
+<details class="note">
+<summary>Why DW is close to 2(1 − ρ) (click to open)</summary>
+<p>Expand the numerator: <span class="arithmatex">\(\sum (\hat u_t - \hat u_{t-1})^2 = \sum \hat u_t^2 + \sum \hat u_{t-1}^2 - 2\sum \hat u_t \hat u_{t-1}\)</span>. In a long sample the first two sums are each about <span class="arithmatex">\(\sum \hat u_t^2\)</span>, and <span class="arithmatex">\(\sum \hat u_t \hat u_{t-1} / \sum \hat u_t^2 \approx \hat\rho\)</span>. So</p>
+<div class="arithmatex">\[
+DW \approx 2 - 2\hat\rho = 2(1 - \hat\rho)
+\]</div>
+<p>No autocorrelation (<span class="arithmatex">\(\rho = 0\)</span>) gives DW ≈ 2. Strong positive autocorrelation (<span class="arithmatex">\(\rho \to 1\)</span>) pushes DW towards 0. Strong negative autocorrelation pushes it towards 4.</p>
+</details>
+<p>Our DW of 0.437 implies <span class="arithmatex">\(\hat\rho \approx 1 - 0.437/2 = 0.78\)</span>. Durbin and Watson tabulated lower and upper bounds, <span class="arithmatex">\(d_L\)</span> and <span class="arithmatex">\(d_U\)</span>; with 180 observations and one regressor, both are a little above 1.7 at 5%. A DW below <span class="arithmatex">\(d_L\)</span> means positive autocorrelation. 0.44 is far below.</p>
+<p>DW has two limitations. There is an awkward "inconclusive" zone between <span class="arithmatex">\(d_L\)</span> and <span class="arithmatex">\(d_U\)</span>. And it is <strong>invalid when the regression includes a lagged dependent variable</strong> (like <span class="arithmatex">\(y_{t-1}\)</span>), which is exactly when autocorrelation is most likely. Durbin later proposed an "h" test for that case, but the next test is simpler.</p>
+<h2 id="test-2-the-residual-correlogram">Test 2: the residual correlogram</h2>
+<p>Save the residuals and look at their autocorrelations (<strong>View → Residual Diagnostics → Correlogram - Q-statistics</strong>):</p>
+<div class="highlight"><pre><span></span><code>Date: 10/27/26   Time: 21:45
+Correlogram of Residuals
+Sample: 2010M01 2024M12
+Included observations: 180
+
+Autocorrelation     Partial Correlation            AC      PAC    Q-Stat    Prob
+
+        |********|          |********|      1   0.781    0.782    111.72   0.000
+        |******  |          |*       |      2   0.629    0.052    184.62   0.000
+        |*****   |          |        |      3   0.518    0.034    234.36   0.000
+        |****    |          |*       |      4   0.450    0.060    272.04   0.000
+        |***     |         *|        |      5   0.350   -0.094    294.96   0.000
+        |***     |          |*       |      6   0.316    0.105    313.75   0.000
+        |**      |        **|        |      7   0.219   -0.158    322.83   0.000
+        |**      |          |*       |      8   0.175    0.058    328.65   0.000
+</code></pre></div>
+<p>The first autocorrelation is 0.78, and the autocorrelations die away slowly. The partial autocorrelation has one big spike at lag 1 and little else: the fingerprint of AR(1) errors. The Ljung-Box Q-statistics (Greta Ljung and George Box, 1978) reject "no autocorrelation" at every lag.</p>
+<h2 id="test-3-the-breusch-godfrey-lm-test">Test 3: the Breusch-Godfrey LM test</h2>
+<p>Trevor Breusch and Leslie Godfrey, working separately in 1978, proposed a test that works with lagged dependent variables and with any number of lags. Regress the residuals on the original regressors and on <span class="arithmatex">\(p\)</span> lagged residuals; if the lagged residuals help, there is autocorrelation. <strong>View → Residual Diagnostics → Serial Correlation LM Test</strong>, 2 lags:</p>
+<div class="highlight"><pre><span></span><code>Breusch-Godfrey Serial Correlation LM Test:
+Null hypothesis: No serial correlation at up to 2 lags
+
+==============================================================================
+F-statistic               140.5108    Prob. F(2,176)                    0.0000
+Obs*R-squared             110.6816    Prob. Chi-Square(2)               0.0000
+==============================================================================
+</code></pre></div>
+<p>Obs·R² = 110.7 against a <span class="arithmatex">\(\chi^2_2\)</span> distribution. Autocorrelation is overwhelming.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Result</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durbin-Watson</td>
+<td>0.44 (implies ρ ≈ 0.78)</td>
+<td>Positive autocorrelation</td>
+</tr>
+<tr>
+<td>Correlogram, lag 1</td>
+<td>AC = 0.78, Q-stat p &lt; 0.001</td>
+<td>Positive autocorrelation</td>
+</tr>
+<tr>
+<td>Breusch-Godfrey, 2 lags</td>
+<td>Obs·R² = 110.7, p &lt; 0.0001</td>
+<td>Autocorrelation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fix-1-newey-west-standard-errors">Fix 1: Newey-West standard errors</h2>
+<p>The quickest fix keeps the OLS coefficients and corrects the standard errors for both heteroskedasticity and autocorrelation (HAC). Whitney Newey and Kenneth West published the estimator in <em>Econometrica</em> in 1987, and it became one of the most used tools in empirical economics. In EViews, <strong>Options → Coefficient covariance matrix: HAC (Newey-West)</strong>, or <code>ls(cov=hac) demand c temp</code>.</p>
+<div class="highlight"><pre><span></span><code>Dependent Variable: DEMAND
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample: 2010M01 2024M12
+Included observations: 180
+HAC standard errors &amp; covariance (Bartlett kernel, Newey-West fixed
+        bandwidth = 5.0000)
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+C                         37.22683      5.271774      7.061538      0.0000
+TEMP                      3.115478      0.186183      16.73338      0.0000
+==============================================================================
+R-squared                 0.785785    Mean dependent var              124.5294
+Adjusted R-squared        0.784581    S.D. dependent var              10.61980
+S.E. of regression        4.928994    Akaike info criterion           6.039196
+Sum squared resid         4324.507    Schwarz criterion               6.074673
+Log likelihood           -541.5276    Hannan-Quinn criter.            6.053580
+F-statistic               652.9393    Durbin-Watson stat              0.436875
+Prob(F-statistic)         0.000000
+==============================================================================
+</code></pre></div>
+<p>The coefficient is unchanged (3.115), but its standard error rises from 0.122 to <strong>0.186</strong>, about 53% larger, and the t-statistic falls from 25.6 to 16.7. Here the effect of temperature is so strong that the conclusion survives. In many real studies, a "significant" t of 3 becomes an unconvincing t of 1.8.</p>
+<p>Look back at the simulation chart, though: HAC standard errors cut the false discoveries a lot, but not all the way to 5%, especially when <span class="arithmatex">\(\rho\)</span> is high and the sample short. They are a good default, not a cure-all.</p>
+<h2 id="fix-2-cochrane-orcutt-or-transform-the-model">Fix 2: Cochrane-Orcutt, or transform the model</h2>
+<p>Donald Cochrane and Guy Orcutt, two young economists at the University of Cambridge's Department of Applied Economics, published a smarter fix in 1949. If <span class="arithmatex">\(u_t = \rho u_{t-1} + \varepsilon_t\)</span>, write the model at <span class="arithmatex">\(t\)</span> and at <span class="arithmatex">\(t-1\)</span>, multiply the second by <span class="arithmatex">\(\rho\)</span>, and subtract:</p>
+<div class="arithmatex">\[
+y_t - \rho\, y_{t-1} = \beta_0 (1 - \rho) + \beta_1 (x_t - \rho\, x_{t-1}) + \underbrace{(u_t - \rho\, u_{t-1})}_{\varepsilon_t}
+\]</div>
+<p>The new error <span class="arithmatex">\(\varepsilon_t\)</span> is clean, fresh noise. So OLS on the <strong>quasi-differenced</strong> data is efficient again. We don't know <span class="arithmatex">\(\rho\)</span>, so we estimate it from the residuals: regressing the OLS residuals on their own lag gives <span class="arithmatex">\(\hat\rho = 0.782\)</span>. Then:</p>
+<p><code>ls (demand-0.782*demand(-1)) c (temp-0.782*temp(-1))</code></p>
+<div class="highlight"><pre><span></span><code>Dependent Variable: DEMAND-0.782*DEMAND(-1)
+Method: Least Squares
+Date: 10/27/26   Time: 21:45
+Sample (adjusted): 2010M02 2024M12
+Included observations: 179 after adjustments
+
+==============================================================================
+Variable               Coefficient    Std. Error   t-Statistic       Prob.
+==============================================================================
+C                         8.195951      0.828246      9.895551      0.0000
+TEMP-0.782*TEMP(-1)       3.104924      0.129769      23.92656      0.0000
+==============================================================================
+R-squared                 0.763836    Mean dependent var              27.23023
+Adjusted R-squared        0.762502    S.D. dependent var              6.327696
+S.E. of regression        3.083723    Akaike info criterion           5.101263
+Sum squared resid         1683.155    Schwarz criterion               5.136876
+Log likelihood           -454.5630    Hannan-Quinn criter.            5.115704
+F-statistic               572.4804    Durbin-Watson stat              2.071707
+Prob(F-statistic)         0.000000
+==============================================================================
+</code></pre></div>
+<ul>
+<li>The temperature effect is <strong>3.10 GWh per °C</strong>, close to the true 3.0, with a standard error of 0.130 that you can trust.</li>
+<li>The <strong>Durbin-Watson is now 2.07</strong>: the residuals are clean.</li>
+<li>The constant 8.196 estimates <span class="arithmatex">\(\beta_0(1-\rho)\)</span>, so <span class="arithmatex">\(\hat\beta_0 = 8.196 / (1 - 0.782) \approx 37.5\)</span>, matching the original intercept.</li>
+</ul>
+<p>Why is this better than Newey-West? HAC fixes the standard errors of an inefficient estimator. Cochrane-Orcutt (a form of generalised least squares, GLS) uses the autocorrelation to get a <strong>more precise</strong> estimate in the first place. The catch: it relies on the AR(1) model for the errors being right. (EViews can also estimate <span class="arithmatex">\(\rho\)</span> and <span class="arithmatex">\(\beta\)</span> together: <code>ls demand c temp ar(1)</code>.)</p>
+<h2 id="fix-3-model-the-dynamics">Fix 3: model the dynamics</h2>
+<p>Often the best fix is to admit that the relationship itself is dynamic: demand this month depends on demand last month, perhaps because heat builds up in buildings, or because consumers' habits adjust slowly. Adding lags of <span class="arithmatex">\(y\)</span> and <span class="arithmatex">\(x\)</span> to the model (an "autoregressive distributed lag" model) often removes the autocorrelation altogether and tells a richer story. When you do, use Breusch-Godfrey, not Durbin-Watson, to check.</p>
+<h2 id="the-lesson">The lesson</h2>
+<p>Time has memory, and when that memory ends up in the errors, OLS becomes overconfident. Look at the Durbin-Watson statistic on every time-series regression, confirm with Breusch-Godfrey, and then fix it: Newey-West for honest standard errors, Cochrane-Orcutt or a dynamic model for better estimates. And first ask whether the autocorrelation is telling you that something is missing from the model.</p>
+<div class="admonition question">
+<p class="admonition-title">Something to think about</p>
+<p>In <a href="random-walks.html">When Two Random Walks Fall in Love</a>, the regression of popcorn on goldfish had a Durbin-Watson statistic of 0.137. Would Newey-West standard errors have rescued that regression? Why, or why not? Leave your answer in the comments.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      All data on this blog are simulated for teaching purposes.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="bundle.d7400e89.min.js"></script>
+      
+        <script src="mathjax.js"></script>
+      
+        <script src="tex-mml-svg.js"></script>
+      
+    
+  </body>
+</html>

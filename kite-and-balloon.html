@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="category-dummy-variables.html" class="md-tabs__link">
+        <a href="category-autocorrelation.html" class="md-tabs__link">
           
   
   
@@ -580,6 +580,36 @@
   
   
     <li class="md-nav__item">
+      <a href="category-autocorrelation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autocorrelation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category-dummy-variables.html" class="md-nav__link">
         
   
@@ -588,6 +618,36 @@
     
   
     Dummy variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="category-getting-started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
   
 
     
@@ -1129,7 +1189,7 @@
 <!-- more -->
 
 <div class="admonition abstract">
-<p class="admonition-title">Unit Root Series · Chapter 1 of 8</p>
+<p class="admonition-title">Part III · Unit Roots · Chapter 1 of 8</p>
 <p><strong>1. The kite and the balloon</strong> · <a href="dickey-fuller.html">2. Dickey-Fuller</a> · <a href="augmented-dickey-fuller.html">3. Augmented Dickey-Fuller</a> · <a href="phillips-perron.html">4. Phillips-Perron</a> · <a href="kpss.html">5. KPSS</a> · <a href="dfgls-ng-perron.html">6. DF-GLS and Ng-Perron</a> · <a href="structural-breaks-unit-roots.html">7. Structural breaks</a> · <a href="panel-unit-roots.html">8. Panel unit roots</a></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P9_kite_balloon</strong> · Simulated data, 200 observations</p>
 </div>
@@ -1294,7 +1354,7 @@ Autocorrelation     Partial Correlation            AC      PAC    Q-Stat    Prob
 <p>With <span class="arithmatex">\(t = 200\)</span> and <span class="arithmatex">\(k = 12\)</span>, this is <span class="arithmatex">\(\sqrt{188/200} = 0.97\)</span>. The correlation is close to 1 for any lag that is small compared with the length of the sample.</p>
 </details>
 <h2 id="why-should-anyone-care">Why should anyone care?</h2>
-<p>Because the balloon breaks ordinary regression. Remember <a href="random-walks.html">Post 2</a> on this blog: two completely unrelated random walks, popcorn sales and goldfish sales, produced a t-statistic of 22. Clive Granger and Paul Newbold showed in 1974 how often this happens, and called such results "spurious regressions".</p>
+<p>Because the balloon breaks ordinary regression. Remember <a href="random-walks.html">When Two Random Walks Fall in Love</a> on this blog: two completely unrelated random walks, popcorn sales and goldfish sales, produced a t-statistic of 22. Clive Granger and Paul Newbold showed in 1974 how often this happens, and called such results "spurious regressions".</p>
 <p>Granger's story has a happy ending. David Hendry criticised the Granger–Newbold work, and Granger set out to prove Hendry wrong. In the process he discovered <strong>cointegration</strong>: the idea that two wandering series can wander <em>together</em>. Granger shared the 2003 Nobel Prize in Economics for it, with Robert Engle. Hendry and Jennifer Castle tell the story in their tribute <em>Clive W.J. Granger and Cointegration</em>. Losing an argument rarely pays that well.</p>
 <p>So before you regress anything on anything over time, you need to know whether you are holding kites or balloons. The rest of this series is about how to find out:</p>
 <table>
