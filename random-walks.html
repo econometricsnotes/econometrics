@@ -196,25 +196,6 @@
   
   
     <li class="md-tabs__item">
-      <a href="unit-roots.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Unit Root Series
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
       <a href="data.html" class="md-tabs__link">
         
   
@@ -360,33 +341,6 @@
   
   
     <li class="md-nav__item">
-      <a href="unit-roots.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Unit Root Series
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="data.html" class="md-nav__link">
         
   
@@ -452,10 +406,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -473,8 +427,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -539,10 +493,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -560,8 +514,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1185,6 +1139,7 @@
 <p class="admonition-title">Part II · Foundations · Chapter 2 of 9</p>
 <p><a href="ice-cream.html">1. Omitted variables</a> · <strong>2. Spurious regression</strong> · <a href="r-squared.html">3. R-squared</a> · <a href="noisy-ruler.html">4. Measurement error</a> · <a href="errors-fan-out.html">5. Heteroskedasticity</a> · <a href="autocorrelation.html">6. Autocorrelation</a> · <a href="monsoon-dummy.html">7. Dummy variables</a> · <a href="rules-changed.html">8. Structural breaks</a> · <a href="two-friends.html">9. Multicollinearity</a></p>
 <p>Data: <a href="blog_datasets.xlsx">blog_datasets.xlsx</a>, sheet <strong>P2_spurious</strong> · Simulated weekly data, 200 observations · <a href="blog_posts.prg">EViews program</a></p>
+<p><strong>Download this chapter's data:</strong> <a download="P2_spurious.xlsx" href="P2_spurious.xlsx"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z"/></svg></span> P2_spurious.xlsx</a></p>
 </div>
 <h2 id="1926-marriages-in-church-and-the-death-rate">1926: marriages in church and the death rate</h2>
 <p>In 1926, George Udny Yule gave his presidential address to the Royal Statistical Society. Its title was a question: "Why do we sometimes get nonsense-correlations between time-series?"</p>
@@ -1221,7 +1176,7 @@ POPCORN_t = POPCORN_{t-1} + e_t \qquad GOLDFISH_t = GOLDFISH_{t-1} + v_t
 \]</div>
 <p>The shocks <span class="arithmatex">\(e\)</span> and <span class="arithmatex">\(v\)</span> have nothing to do with each other. The true slope is exactly zero.</p>
 <h2 id="why-does-this-happen">Why does this happen?</h2>
-<p>A random walk has no home. Over 200 weeks it drifts up for a while, then down, then sideways, purely by chance. Two such wanderers will often drift in the same direction for long stretches, and OLS reads those shared drifts as a relationship. (The <a href="kite-and-balloon.html">Unit Root Series</a> on this blog explains random walks in detail.)</p>
+<p>A random walk has no home. Over 200 weeks it drifts up for a while, then down, then sideways, purely by chance. Two such wanderers will often drift in the same direction for long stretches, and OLS reads those shared drifts as a relationship. (The unit-root chapters in Part III, starting with <a href="kite-and-balloon.html">The Kite and the Balloon</a>, explain random walks in detail.)</p>
 <h2 id="granger-and-newbold-its-not-rare-its-normal">Granger and Newbold: it's not rare, it's normal</h2>
 <p>In 1974 Clive Granger and Paul Newbold published "Spurious regressions in econometrics" in the <em>Journal of Econometrics</em>. They simulated pairs of independent random walks and regressed one on the other. The t-test, which should reject 5% of the time, rejected about three times in four.</p>
 <p>I repeated their experiment for different sample lengths:</p>

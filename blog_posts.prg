@@ -115,8 +115,8 @@ equation eq8c.ls rent c builtup+carpet
 ' Condition indices: open EQ8A, View -> Coefficient Diagnostics ->
 ' Coefficient Variance Decomposition
 
-' ================= Unit Root Series =================
-' Chapters 1-8 of the Unit Root Series (blog posts 9-16)
+' ================= Part III: Unit Roots =================
+' Part III, chapters 1-8
 
 ' ---------------- Chapter 1: The kite and the balloon ----------------
 pagecreate(page=p9) u 1 200

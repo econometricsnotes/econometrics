@@ -265,3 +265,9 @@
   .md-typeset .ch-card, .md-typeset a.hero-btn { transition: none; }
   .md-typeset .ch-card:hover { transform: none; }
 }
+
+/* per-chapter download buttons on the Data page */
+.md-typeset a.dl-btn{display:inline-flex;align-items:center;gap:.3em;white-space:nowrap;padding:.25em .8em;border-radius:999px;
+  border:1px solid var(--turmeric,#d98a00);color:var(--ink,#0f2a43);font-weight:600;font-size:.85em;text-decoration:none}
+.md-typeset a.dl-btn:hover{background:var(--turmeric,#d98a00);color:#fff}
+[data-md-color-scheme="slate"] .md-typeset a.dl-btn{color:#f4e3c1}

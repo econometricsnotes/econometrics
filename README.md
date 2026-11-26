@@ -44,7 +44,9 @@ for readers to think about.
 
 ## Data and EViews files
 
-- [`blog_datasets.xlsx`](blog_datasets.xlsx) — one sheet per chapter, with a README sheet describing every variable
+- [`blog_datasets.xlsx`](blog_datasets.xlsx) — every chapter in one workbook, with a README sheet describing every variable
+- `P1_icecream.xlsx`, `P2_spurious.xlsx`, ... — one small file per chapter, for viewers who want just one dataset
+- One Excel file per chapter (for example [`P1_icecream.xlsx`](P1_icecream.xlsx)), each with an About sheet; all are listed on the blog's Data & EViews page
 - [`blog_posts.prg`](blog_posts.prg) — EViews program that reproduces every table in the chapters
 
 To use them: save both files in the same folder, open EViews, choose **File → Open → Program**,
